@@ -8,8 +8,8 @@
     "isHttps": false,
 
     "proxyServer": {
-        "host": "localhost",
-        "port": "9092",
+        "host": "ex.bitbal.top",
+        "port": "80",
     }
     
 }

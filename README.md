@@ -1,25 +1,41 @@
-## package.json
+## React CRM Kit for Cryptocurrency Exchange
 
-### scripts有
+### Quick Overview
+    
+    yarn install
+    npm run dev
+
+    open http://localhost:8082
+
+[Demo](http://ex.bitbal.top)
+
+### Packages
+- React v16
+- react-router v4.2
+- redux v3.6
+- webpack v4.6
+
+
+### package.json scripts
 - `npm run flow`    
-    flow校验，同时会给出报告    
+    flow check
 - `npm run test`    
-    测试
+    test
 - `npm run coverage`
-    查看测试覆盖率，运行完成后，用浏览器打开`_reports/coverage/lconv-report/index.html`文件，即可逐一查看覆盖率问题
+    testing coverage, results located `_reports/coverage/lconv-report/index.html`
         
-        覆盖率要求：
-        Functions(函数)   90%
-        Branches(分支)    90%
-        Statement(语句)   80%
+        Covarage standard
+        Functions   90%
+        Branches    90%
+        Statement   80%
 
 - `npm run build`     
-    打包
+    build static file, results located `build`
 - `npm run dev`    
-    打开测试server
-- `npm run prod`
-    打开测试server，但静态文件是build目录中的（即需要发布的静态内容）
-- `npm run lintgit`    
+    development mode, will serve static file from `src`
+- `npm run prod`    
+    prodution or online, will serve static file from `build`
+- `npm run lintgit`        
     eslint校验，只校验本次修改的
 - `npm run lint`    
     eslint校验
@@ -61,10 +77,6 @@
 ### 2.1，环境搭建
 - `yarn install`   
     安装依赖的包     
-
-- `npm run dev`    
-    开启dev server服务，用于产生前端网页及静态文件路由，该mock的文件在`mock`目录中，可以在`mock/config.json`文件中配置`server`的IP和端口号。`mock/config.json`中会有注释。其中后会提示`DEV Server`的访问路径。 `API Server`代表与`DEV Server`对接的后台配置。      
-
         
 ### 2.2，开发过程
 
