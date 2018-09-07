@@ -1,0 +1,25 @@
+verbose: false
+instrumentation:
+    root: .
+    default-excludes: true
+    excludes: ['**/__test__/**']
+    embed-source: false
+    variable: __coverage__
+    compact: true
+    preserve-comments: false
+    complete-copy: false
+    save-baseline: false
+    baseline-file: ./_reports/coverage/coverage-baseline.json
+reporting:
+    print: summary
+    reports:
+        - lcov
+    dir: ./_reports/coverage
+    watermarks:
+        statements: [60, 80]
+        lines: [60, 80]
+        functions: [70, 80]
+        branches: [70, 80]
+hooks:
+    hook-run-in-context: false
+    post-require-hook: null

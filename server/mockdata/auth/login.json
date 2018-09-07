@@ -1,0 +1,30 @@
+{
+    "code": 0,
+    "user": {
+        "userName": "juju",
+        "userId": 12801,
+        "email": "juju@x.com",
+        "phone": "1xxx",
+        "firstName": "ju",
+        "lastName": "ju",
+        "description": null,
+        "companyId": 1007,
+        "companyName": "jujucpy"
+    },
+    "permission": {
+       
+        "company": {
+            "add": true,
+            "view": true,
+            "edit": true,
+            "query": true
+        },
+      
+        "user": {
+            "add": true,
+            "view": true,
+            "edit": true,
+            "query": true
+        },
+    },
+}

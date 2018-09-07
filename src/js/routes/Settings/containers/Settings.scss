@@ -1,0 +1,51 @@
+.s-setcommon {
+
+    &__root {
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 15px ;
+    }
+
+    &__item {
+        display: block;
+        max-width: 200px;
+    }
+}
+
+.s-settings {
+
+    legend {
+        line-height: 30px;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+}
+
+.s-setscy{
+    &__root{
+        font-weight:bold;
+        font-size:16px;
+        margin-top:15px ;
+    }
+    
+    &__line{
+        padding:10px 0;
+    }
+    &__input{
+        width: 180px;
+        height: 28px;
+    }
+    
+    &__input_error{
+        border:1px solid red;
+    }
+
+    &__sub{
+        margin-top:20px;
+        border-radius:4px;
+        font-size:14px;
+    }
+
+}

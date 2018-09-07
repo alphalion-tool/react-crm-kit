@@ -1,0 +1,68 @@
+.s-excel-import {
+    display: inline-block;
+    line-height: 1.5;
+    font-size: 12px;
+    font-weight: 500;
+    vertical-align: middle;
+    &__selectFile {
+        color: #838790;
+        display: inline-block;
+        height: 28px;
+        width: 100px;
+        text-decoration: none;
+        position: relative;
+        border: 1px solid #C0C0C0;
+        border-radius: 2px;
+        &:hover,
+        &:focus {
+            // background: rgb(176, 199, 216);
+            color: #108ee9;
+            background-color: #fff;
+            border-color: #108ee9;
+        }
+        &-text {
+            display: inline-block;
+            margin-left: 20px;
+            height: 28px;
+            line-height: 28px;
+        }
+        input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            height: 28px;
+            width: 100%;
+            z-index: 999;
+        }
+
+        input[type='file'] {
+          color: transparent;
+        }
+
+        input[type='file']::-webkit-file-upload-button {
+          visibility: hidden;
+        }
+    }
+    &__icon {
+        left: 10px;
+        font-size: 14px;
+    }
+    &__fileName {
+        border: 0px;
+        width: 400px;
+        height: 28px;
+        padding-left: 10px;
+        border: solid 1px #ccc;
+    }
+    &__import {
+        border-radius: 0 !important;
+        margin: 0 !important;
+        background-color: #108ee9 !important;
+        height: 28px;
+        padding: 0px 15px;
+        &:hover {
+            background: green !important;
+        }
+    }
+}

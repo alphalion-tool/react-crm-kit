@@ -1,0 +1,15 @@
+{
+    
+    "port": 8082,
+    // server端配置，当前的web服务会根据此配置去请求服务端的接口
+    
+    // if useProxy is true, will proxy server config
+    "useProxy": true,
+    "isHttps": false,
+
+    "proxyServer": {
+        "host": "localhost",
+        "port": "9092",
+    }
+    
+}

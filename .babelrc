@@ -1,0 +1,15 @@
+{
+    "presets": [
+        "env",
+        "flow",
+        "stage-0",
+        "react"
+    ],
+    "plugins": [ 
+        "syntax-flow", 
+        "flow-react-proptypes", 
+        "transform-decorators-legacy", 
+        "transform-flow-comments",
+        "syntax-dynamic-import"
+    ]
+}

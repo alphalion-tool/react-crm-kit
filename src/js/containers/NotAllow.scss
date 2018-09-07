@@ -1,0 +1,16 @@
+
+.s-notallow {
+    background: white;
+    border-radius: 10px;
+    line-height: 2;
+    padding: 20px;
+    width: 250px;
+
+    &__title {
+        background-position-y: 4px;
+        background-repeat: no-repeat;
+        background-size: 20px;
+        color: #ff6237;
+        text-indent: 30px;
+    }
+}
