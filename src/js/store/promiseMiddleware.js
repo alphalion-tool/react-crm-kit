@@ -1,6 +1,6 @@
 
 import timeoutPromise, { defaultTime } from 'jscom/utils/timeoutPromise';
-import { Message } from 'antd';
+import { message } from 'antd';
 
 export default ({ dispatch, getState }) => (next) => (action) => {
     const { payload, type } = action;
@@ -32,7 +32,7 @@ export default ({ dispatch, getState }) => (next) => (action) => {
             // 如果关闭了SHOW_ERR_TIP则不提示
             if (SHOW_ERR_TIP === false) return;
             if (error.response && error.response.data && error.response.data.code === 1) return;
-            if (error.message) Message.error(error.message);
+            if (error && error.message) message.error(error.message);
         }
     );
 };
