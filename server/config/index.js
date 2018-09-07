@@ -15,7 +15,7 @@ export function getConfig (env) {
     switch (env) {
         case 'production':
             filePath = './prod.config.json';
-            localFilePath = './local.dev.config.json';
+            localFilePath = './local.prod.config.json';
             break;
         default:
             break;
