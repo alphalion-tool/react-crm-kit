@@ -44,6 +44,7 @@
   "author": "deju",
   "license": "ISC",
   "dependencies": {
+    "@antv/data-set": "0.9.5",
     "add-dom-event-listener": "1.0.2",
     "antd": "3.9.1",
     "async-validator": "1.8.1",
@@ -67,6 +68,7 @@
     "babel-preset-flow": "6.23.0",
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
+    "bizcharts": "3.2.2",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chokidar-cli": "1.2.0",
     "classnames": "2.2.5",

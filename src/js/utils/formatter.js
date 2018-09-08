@@ -14,14 +14,6 @@ const dateFormatOption = {
     day: '2-digit',
 };
 
-const FXTypes = {
-    Spot: 'Spot',
-    Forward: 'Forward',
-    Swap: 'Swap',
-    NDF: 'NDF',
-    Option: 'Option',
-};
-
 /**
  * @memberOf module:utils/formatter
  * @param  {Number} num       需要格式化的数字

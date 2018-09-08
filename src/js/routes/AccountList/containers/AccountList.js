@@ -94,6 +94,8 @@ export class PureAccountList extends Component {
             <Table
                 dataSource={accountList}
                 columns={COLUMNS}
+                size="small"
+                scroll={{ x: true }}
             />
         );
     }

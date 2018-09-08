@@ -1,0 +1,16 @@
+
+
+.s-dashboard {
+
+    &__currsummary {
+
+        p {
+            text-align: center;
+            font-size: 25px;
+        }
+
+        p + h5 {
+            margin-top: 50px;
+        }
+    }
+}

@@ -223,8 +223,8 @@ class App extends Component {
     renderChildren () {
         return (
             <Switch>
-                <Route path="/" exact component={Dashboard} />
-                <Route path="/dashboard" exact component={Dashboard} />
+                <Route {...Dashboard} path="/"  exact />
+                <Route {...Dashboard} path="/dashboard" exact />
                 {routes.map((route) => <Route strict key={`${route.path}`} {...route} />)}
                 <Route component={NotFound} />
             </Switch>

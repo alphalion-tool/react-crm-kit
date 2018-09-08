@@ -6,6 +6,7 @@ import consts from './const';
 import deposit from './deposit';
 import javascript from './javascript';
 import order from './order';
+import summary from './summary';
 import user from './user';
 import wallet from './wallet';
 import withdraw from './withdraw';
@@ -16,6 +17,7 @@ const alls = {
     ...deposit,
     ...javascript,
     ...order,
+    ...summary,
     ...user,
     ...wallet, ...withdraw
 };

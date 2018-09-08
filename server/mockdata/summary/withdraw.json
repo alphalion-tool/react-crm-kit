@@ -1,0 +1,26 @@
+{
+    "code": 0,
+    "msg": "Success",
+    "data": {
+        "withdraw": 201990,
+        "deposit": 190922,
+        "withdraws": [
+            { "date": "09-03", "volume": 31120 },
+            { "date": "09-04", "volume": 35120 },
+            { "date": "09-05", "volume": 32320 },
+            { "date": "09-06", "volume": 33120 },
+            { "date": "09-07", "volume": 34120 },
+            { "date": "09-08", "volume": 32120 },
+            { "date": "09-09", "volume": 31920 }
+        ],
+        "deposits": [
+            { "date": "09-03", "volume": 41120 },
+            { "date": "09-04", "volume": 55120 },
+            { "date": "09-05", "volume": 32320 },
+            { "date": "09-06", "volume": 23120 },
+            { "date": "09-07", "volume": 34120 },
+            { "date": "09-08", "volume": 72120 },
+            { "date": "09-09", "volume": 51920 }
+        ]
+    }
+}

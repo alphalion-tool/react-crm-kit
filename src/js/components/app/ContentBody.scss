@@ -32,6 +32,8 @@
     &__table {
         font-size: 12px;
         position: relative;
+
+        .ant-table td { white-space: nowrap; }
     }
 
     &--loading {

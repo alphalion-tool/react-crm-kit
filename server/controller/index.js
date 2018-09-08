@@ -6,6 +6,7 @@ import userControls from './user';
 import indexControls from './indexController';
 import orderControls from './order';
 import logsControls from './logs';
+import summaryControls from './summary';
 import walletControls from './wallet';
 import withdrawControls from './withdraw';
 import depositControls from './deposit';
@@ -18,6 +19,7 @@ const routes = [
     ...walletControls,
     ...logsControls,
     ...accountControls,
+    ...summaryControls,
     ...userControls,
     ...orderControls
 ];

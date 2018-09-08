@@ -19,16 +19,19 @@ const columns = [
         title: 'ID Type',
         key: 'idType',
         dataIndex: 'idType',
+        width: WIDTHS.CELL_WIDTH,
     },
     {
         title: 'ID Number',
         key: 'idNumber',
         dataIndex: 'idNumber',
+        width: WIDTHS.CELL_WIDTH,
     },
     {
         title: 'Level',
         key: 'level',
-        dataIndex: 'level'
+        dataIndex: 'level',
+        width: WIDTHS.CELL_WIDTH,
     },
     {
         title: 'Email',
@@ -46,6 +49,7 @@ const columns = [
         title: 'Last Name',
         key: 'lastName',
         dataIndex: 'lastName',
+        width: WIDTHS.CELL_WIDTH,
     },
     {
         title: 'Phone',

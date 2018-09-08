@@ -1,0 +1,55 @@
+{
+    "code": 0,
+    "msg": "Success",
+    "data": {
+        "withdraws": [
+            { "currency": "BTC", "volume": 10928.01 },
+            { "currency": "BCH", "volume": 110928.01 },
+            { "currency": "XRP", "volume": 209110928.01 },
+            { "currency": "ETH", "volume": 910927.01 },
+            { "currency": "LTC", "volume": 110928.01 },
+            { "currency": "EOS", "volume": 2110928.01 },
+            { "currency": "XLM", "volume": 22210928.01 },
+            { "currency": "ZEC", "volume": 210928.01 },
+            { "currency": "ADA", "volume": 10922228.01 },
+            { "currency": "IOTA", "volume": 102222928.01 },
+            { "currency": "USDT", "volume": 1092346228.01 },
+            { "currency": "ETC", "volume": 1092328.01 },
+            { "currency": "LSK", "volume": 101928.01 },
+            { "currency": "DASH", "volume": 1092810.01 },
+            { "currency": "XMR", "volume": 10928097.01 },
+            { "currency": "TRX", "volume": 1092802839.01 },
+            { "currency": "DOGE", "volume": 10928923832948.01 },
+            { "currency": "OMG", "volume": 109289.01 }
+        ],
+        "users": [
+            { "date": "09-03", "count": 11120 },
+            { "date": "09-04", "count": 15120 },
+            { "date": "09-05", "count": 12320 },
+            { "date": "09-06", "count": 13120 },
+            { "date": "09-07", "count": 14120 },
+            { "date": "09-08", "count": 12120 },
+            { "date": "09-09", "count": 11920 }
+        ],
+        "volumes": [
+            { "currency": "BTC", "volume": 5092121.01 },
+            { "currency": "BCH", "volume": 1110928.01 },
+            { "currency": "XRP", "volume": 2020928.01 },
+            { "currency": "ETH", "volume": 4102927.01 },
+            { "currency": "LTC", "volume": 1109228.01 },
+            { "currency": "EOS", "volume": 2110928.01 },
+            { "currency": "XLM", "volume": 2221928.01 },
+            { "currency": "ZEC", "volume": 1210928.01 },
+            { "currency": "ADA", "volume": 1098228.01 },
+            { "currency": "IOTA", "volume": 1022928.01 },
+            { "currency": "USDT", "volume": 1034228.01 },
+            { "currency": "ETC", "volume": 1092328.01 },
+            // { "currency": "LSK", "volume": 1001928.01 },
+            // { "currency": "DASH", "volume": 1092810.01 },
+            // { "currency": "XMR", "volume": 1928097.01 },
+            // { "currency": "TRX", "volume": 1802839.01 },
+            // { "currency": "DOGE", "volume": 10928923832948.01 },
+            // { "currency": "OMG", "volume": 1109289.01 }
+        ]
+    }
+}
