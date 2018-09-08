@@ -9,19 +9,23 @@ html
     meta(name="description", content="#{desc}")
 
     link(rel="icon", type="image/png", sizes="96x96", href="/static/images/logo/bitcoin.png")
-    link(rel="stylesheet", type="text/css", href="/static/main.css?v=be3d228c0d8dc00a5f8e")
+    link(rel="stylesheet", type="text/css", href="/static/main.css?v=a8473e4c3abfaa6119e4")
 
     <!--[if lt IE 9]>
     script(type="text/javascript", src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
     script(type="text/javascript", src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js")
     <![endif]-->
 
-    <!-- Sat Sep 08 2018 20:02:45 GMT+0800 (CST) -->
+    <!-- Sun Sep 09 2018 01:40:55 GMT+0800 (CST) -->
 
   body
     #wrap.main
 
-  script(type="text/javascript", src="/static/vendors.js?v=be3d228c0d8dc00a5f8e")
+    div(class="github-fork-ribbon-wrapper left-bottom")
+      div(class="github-fork-ribbon")
+        a(href="https://github.com/alphalion-tool/react-crm-kit") Fuck me on GitHub
+
+  script(type="text/javascript", src="/static/vendors.js?v=a8473e4c3abfaa6119e4")
   script.
     window.__DEBUG__ = #{debug};
     window.__DEV__ = #{dev};
@@ -33,5 +37,5 @@ html
       user: !{user},
       constants: !{constants}
     };
-  script(type="text/javascript", src="/static/main.js?v=be3d228c0d8dc00a5f8e")
-  script(type="text/javascript", src="/static/index.js?v=be3d228c0d8dc00a5f8e")
+  script(type="text/javascript", src="/static/main.js?v=a8473e4c3abfaa6119e4")
+  script(type="text/javascript", src="/static/index.js?v=a8473e4c3abfaa6119e4")

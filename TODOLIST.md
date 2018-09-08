@@ -2,7 +2,7 @@
 ## Requirements
 
 ### BackEnd
-- Dashboard接口
+- Dashboard接口  done
 - Accounts接口
 - Withdraws接口
 - Orders接口
@@ -12,7 +12,7 @@
 - Logs接口
 
 ### FrontEnd
-- Dashboard界面
+- Dashboard界面  done
 
         近5日用户新增情况
         24小时各币种交易量
