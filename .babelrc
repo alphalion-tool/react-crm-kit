@@ -5,7 +5,7 @@
         "stage-0",
         "react"
     ],
-    "plugins": [ 
+    "plugins": [
         "syntax-flow", 
         "flow-react-proptypes", 
         "transform-decorators-legacy", 

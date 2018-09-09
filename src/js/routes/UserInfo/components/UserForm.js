@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { bind } from 'decko';
-import { Button, Input, PopConfirm, Icon, Form } from 'antd';
+import { Button, Input, Popconfirm, Icon, Form } from 'antd';
 
 import { cloneDeep } from 'jscom/utils/lodash';
 import { formDescriptions, mapData2Fields } from '../config/form';
@@ -98,9 +98,9 @@ class UserForm extends Component {
         }
 
         return (
-            <PopConfirm title="Are you sure want to reset Google Auth Code?" onConfirm={this.handleResetToken}>
+            <Popconfirm title="Are you sure want to reset Google Auth Code?" onConfirm={this.handleResetToken}>
                 <Button className="s-userinfo__reset-btn" {...btnProps}>{btnText}</Button>
-            </PopConfirm>
+            </Popconfirm>
         );
     }
 
@@ -123,9 +123,9 @@ class UserForm extends Component {
             btnText = 'Reset Success';
         }
         return (
-            <PopConfirm title="Are you sure want to reset password?" onConfirm={this.handleResetPassword}>
+            <Popconfirm title="Are you sure want to reset password?" onConfirm={this.handleResetPassword}>
                 <Button className="s-userinfo__reset-btn" {...btnProps}>{btnText}</Button>
-            </PopConfirm>
+            </Popconfirm>
         );
     }
 
