@@ -1,0 +1,34 @@
+{
+    "code": 0,
+    "msg": "Success",
+    "data": {
+        "count": 8,
+        "data": [{
+            "index": 1,
+            "tradeId": 1988,
+            "orderId": 122,
+            "side": "Buy",
+            "currencyPair": "BTC-USD",
+            "accountId": 129000,
+            "accountName": "jack",
+            "quantity": 12.1023,
+            "tradeTime": "2018-09-07 13:00:11",
+            "price": 6300,
+            "orderType": "Limit",
+            "fee": 12
+        },{
+            "index": 2,
+            "tradeId": 1988,
+            "orderId": 122,
+            "side": "Sell",
+            "currencyPair": "BTC-USD",
+            "accountId": 129000,
+            "accountName": "Time",
+            "quantity": 12.1023,
+            "tradeTime": "2018-09-07 13:00:11",
+            "price": 6300,
+            "orderType": "Market",
+            "fee": 12
+        }]
+    }
+}

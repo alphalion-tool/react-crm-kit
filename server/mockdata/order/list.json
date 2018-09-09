@@ -6,15 +6,31 @@
         "data": [{
             "index": 1,
             "orderId": 122,
+            "status": "Filled",
             "side": "Buy",
-            "productId": "BTC-USD",
+            "currencyPair": "BTC-USD",
             "accountId": 129000,
             "accountName": "jack",
             "createTime": "2018-09-07 12:00:11",
-            "quantity": "12.1023",
-            "tradeTime": "2018-09-07 13:00:11",
-            "averagePrice": "6300",
-            "orderType": "Limit|market"
+            "quantity": 12.1023,
+            "dealQuantity": 10.1820,
+            "doneTime": "2018-09-07 13:00:11",
+            "price": 8900,
+            "orderType": "Limit"
+        },{
+            "index": 2,
+            "orderId": 122,
+            "status": "None",
+            "side": "Buy",
+            "currencyPair": "BTC-USD",
+            "accountId": 129000,
+            "accountName": "Tim",
+            "createTime": "2018-09-07 12:00:11",
+            "quantity": 12.1023,
+            "dealQuantity": 10.1820,
+            "doneTime": "2018-09-07 13:00:11",
+            "price": 8900,
+            "orderType": "Market"
         }]
     }
 }

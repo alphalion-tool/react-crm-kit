@@ -1,0 +1,28 @@
+{
+    "code": 0,
+    "msg": "Success",
+    "data": {
+        "count": 8,
+        "data": [{
+            "id": 12,
+            "status": "enable",
+            "walletName": "wallet1",
+            "balance": 8209.8668,
+            "type": "COLD",
+            "currency": "BTC",
+            "ctime": "2018-09-08 12:00:01",
+            "creator": "admin",
+            "address": "1MFUPo2vRih3XkRDCiSzGiirQh2PXb8tkj"
+        }, {
+            "id": 13,
+            "status": "disable",
+            "walletName": "wallet0",
+            "balance": 298209.8668,
+            "type": "HOT",
+            "currency": "BTC",
+            "ctime": "2018-09-08 12:00:01",
+            "creator": "admin",
+            "address": "2MFUPo2vRih3XkRDCiSzGiirQh2PXb8tkj"
+        }]
+    }
+}
