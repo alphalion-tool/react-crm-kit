@@ -2,9 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 const library = '[name]_lib';
 const vendors = [
-    'react', 'lodash', 'moment',
+    'react', 'moment',
     'immutable', 'prop-types', 'react-dom', 
-    'react-intl', 'react-redux', 'react-router',
+    'react-intl', 'react-redux', 'react-router-dom',
     'classnames', 'axios', 'antd',
     'redux', 'react-cookie', 'decko', 'memoized-decorator'
 ];

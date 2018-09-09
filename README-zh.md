@@ -1,28 +1,38 @@
 ## React CRM Kit for Cryptocurrency Exchange
+该项目来源于公司内部的一个产品（金融相关），产品涉及到多达200个模块、用户权限管理、多语言等特性。在项目完成之际，在移除了内部的业务、组件库、分屏、权限管理等功能后，将框架开源出来，方便其他人使用，同时也想让更多人参与到架构优化中。目前使用组件库[Antd](https://ant.design/)，图标库则使用[BizCharts](https://alibaba.github.io/BizCharts/index.html)，依托于`redux`进行本地数据管理，路由使用`react-router`中的hash方式，测试方面，使用`jasmine`作为单元测试runner。整个项目的数据是使用的假数据，模拟的是加密货币交易所内部的管理系统。开发上则前后端分离的开发方式，所以部署时需要约束静态文件目录位置，以及模板里的数据内容。同时使用react flow作为类型检测。
 
-### Quick Overview
+
+[Demo](http://ex.bitbal.top)    
+用户名和密码任意均可进入
+
+
+### 1，快速使用
     
-    yarn install
+    git clone https://github.com/alphalion-tool/react-crm-kit.git
+    cd react-crm-kit && yarn install
     npm run dev
 
-    open http://localhost:8082
+    在浏览器中打开：http://localhost:8082
 
-[Demo](http://ex.bitbal.top)
+    // 编译
+    npm run build
 
-### Packages
-- React v16
+
+### 2，Packages
+- react v16
 - react-router v4.2
 - redux v3.6
 - webpack v4.6
+- antd v3.9.1
 
 
-### package.json scripts
+### 3，package.json 中的 scripts
 - `npm run flow`    
-    flow check
+    flow校验
 - `npm run test`    
-    test
-- `npm run coverage`
-    testing coverage, results located `_reports/coverage/lconv-report/index.html`
+    运行测试用例
+- `npm run coverage`    
+    运行测试并给出测试覆盖率汇总，执行结果放在`_reports/coverage/lconv-report/index.html`
         
         Covarage standard
         Functions   90%
@@ -30,13 +40,15 @@
         Statement   80%
 
 - `npm run build`     
-    build static file, results located `build`
+    编译成最终静态文件，放在`build`目录中，连同前后端约定的模板。    
+    `build/static`为所有的静态文件目录    
+    `build/template`是前后端的页面模板，多数情况下只需要一个首页模板即可
 - `npm run dev`    
-    development mode, will serve static file from `src`
+    开发模式，开启webpack，此时页面中使用静态文件是从`src`中实时产生的
 - `npm run prod`    
-    prodution or online, will serve static file from `build`
+    线上模式，此时页面用到的静态文件是从`build`中获取的。可作为部署(仅当所有的server代码存在于当前的项目中)
 - `npm run lintgit`        
-    eslint校验，只校验本次修改的
+    eslint校验，只校验当次git记录中修改的
 - `npm run lint`    
     eslint校验
 - `npm run lintquiet`    
@@ -44,51 +56,48 @@
 - `npm run stylelintgit`    
     stylelint校验，只校验本次修改的    
 - `npm run csslintgit`    
-    同上
+    css lint 校验，只校验本次修改的
 
 
-## 1，说明
+### 4，目录结构说明
      
      // 文件目录说明
      |----- build     // 执行npm run build后文件放置的位置
+     |----- mock      // mock-server功能文件，实现了server api的请求代理，以及路由静态文件
      |----- node_modules   
      |----- scripts   // 功能性脚本
      |----- server  // 服务端文件，实现了server api的请求代理，以及路由静态文件
-     |----- shells  // 脚本
-     |----- src       // 前端js/css/img/font等文件的目录
-     |----- test   // 测试用到的基础入口
+     |----- shells  // shell脚本，部署等脚本
+     |----- src       // 前端js/css/img/font/locale等文件的目录
+     |----- test   // 测试用到的环境
      |----- .babelrc
      |----- .eslintrc.js
      |----- package.json
-     |----- README-CSS.md
-     |----- README-JS.md
-     |----- README.md
      |----- webpack.common.js     // webpack公用配置
      |----- webpack.config.js     // webpack dev 时配置 （即开发过程）
      |----- webpack.build.js  // webpack product 时配置  (即上线状态)
      |----- webpack.dll.js   // webpack dll 
 
-## 2，环境搭建、配置修改、开发、上线
-环境至少包含node, webpack, npm, eslint    
+### 5，环境搭建、配置修改、开发、上线
+环境至少包含node, yarn    
 
-
-### 2.1，环境搭建
+#### 5.1，环境搭建
 - `yarn install`   
     安装依赖的包     
         
-### 2.2，开发过程
+#### 5.2，开发过程
 
-### 2.3，代码校验
-#### js方面
+#### 5.3，代码校验
+##### js方面
 - `npm run lintgit`  用eslint校验目前更改的文件。(`git status`后显示的文件)      
 - `npm run lint`  用eslint校验所有的文件。
 - `npm run lintquiet`
 
-#### css方面
+##### css方面
 - `npm run stylelint` 查看所有文件的stylelint结果
 - `npm run stylelintgit` 查看当前修改的文件的stylelint结果
 
-#### 其他
+##### 其他
 - 在`git commit`时会自动对js进行校验。
 
 
@@ -109,7 +118,6 @@
 使用[react-addons-perf](https://facebook.github.io/react/docs/perf.html)来监控性能问题     
 
 
-
     
 ## 3，前端目录结构说明
 
@@ -123,33 +131,6 @@
     connectPermission方法
 - 内嵌组件
     WithPermission
-
-### 软件版本
-- node 6.12 -> 可以提升至8.x LTS建议升至最新稳定版
-    安装方式见：https://nodejs.org/en/download/package-manager/
-
-        curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
-        sudo yum -y install nodejs
-
-- yarn 最新版(1.3.2)
-    安装详情见：https://yarnpkg.com/lang/en/docs/install/
-
-        curl -o- -L https://yarnpkg.com/install.sh | bash
-- phantomjs (2.1.1)  (目前不需要)
-    安装详情见：http://phantomjs.org/build.html
-
-        sudo yum -y install gcc gcc-c++ make flex bison gperf ruby \
-            openssl-devel freetype-devel fontconfig-devel libicu-devel sqlite-devel \
-            libpng-devel libjpeg-devel
-        
-
-        git clone git://github.com/ariya/phantomjs.git
-        cd phantomjs
-        git checkout 2.1.1
-        git submodule init
-        git submodule update
-
-        python build.py
 
 
 ### Mock 平台

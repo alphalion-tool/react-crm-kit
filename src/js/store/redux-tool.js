@@ -1,8 +1,7 @@
 'use strict';
 
-import zipObject from 'lodash/array/zipObject';
-import mapValues from 'lodash/object/mapValues';
-import map from 'lodash/collection/map';
+import mapValues from 'lodash/mapValues';
+import map from 'lodash/map';
 import uniqueId from 'uniqueid';
 
 const uniqueActionId = uniqueId('');
@@ -10,8 +9,7 @@ const uniqueActionId = uniqueId('');
 // 创建action，不通过action_type，每次自动产生action_type
 export const createActions = (actionObj, prefix = 'unknown') => {
     const baseId = uniqueActionId();
-    return zipObject(map(actionObj, (actionCreator, key) => {
-        // console.log(actionCreator, key);
+    const actionArr = map(actionObj, (actionCreator, key) => {
         const actionId = `${prefix}-${baseId}-${key}`;
         const method = (...args) => {
             const result = actionCreator(...args);
@@ -24,7 +22,14 @@ export const createActions = (actionObj, prefix = 'unknown') => {
         };
         method._id = actionId;
         return [key, method];
-    }));
+    });
+    const actions = [];
+    actionArr.forEach((item) => {
+        if (Array.isArray(item)) {
+            actions[item[0]] = item[1];
+        }
+    });
+    return actions;
 };
 
 // 获取createActions中产生的actionid

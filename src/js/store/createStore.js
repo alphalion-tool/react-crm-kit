@@ -1,7 +1,6 @@
 
 import { applyMiddleware, compose, createStore as createStoreRdx } from 'redux';
 
-import { hashHistory, browserHistory } from 'react-router';
 import { makeRootReducer } from './reducers';
 import { updateLocation } from './location';
 import promise from './promiseMiddleware';
