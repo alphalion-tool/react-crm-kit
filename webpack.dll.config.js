@@ -5,7 +5,7 @@ const vendors = [
     'react', 'moment',
     'immutable', 'prop-types', 'react-dom', 
     'react-intl', 'react-redux', 'react-router-dom',
-    'classnames', 'axios', 'antd',
+    'classnames', 'axios',
     'redux', 'react-cookie', 'decko', 'memoized-decorator'
 ];
 
