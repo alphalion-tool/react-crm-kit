@@ -1,7 +1,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Message, Form, Input } from 'antd';
+import { Modal, message, Form, Input } from 'antd';
 import services from 'jscom/services';
 
 export default class PasswordModal extends PureComponent {
@@ -30,12 +30,12 @@ export default class PasswordModal extends PureComponent {
 
         const { oldPassword, newPassword, againPassword } = this.state;
         if (!oldPassword || !newPassword) {
-            Message.error('Please input old and new password');
+            message.error('Please input old and new password');
             return;
         }
 
         if (newPassword !== againPassword) {
-            Message.error('Please confirm password');
+            message.error('Please confirm password');
             return;
         }
 
@@ -49,14 +49,14 @@ export default class PasswordModal extends PureComponent {
         params.origin = oldPassword;
 
         services.authPassword(params).then((res) => {
-            Message.success('Change password success!');
+            message.success('Change password success!');
             this.setState({
                 loading: false,
             }, () => {
                 this.props.onClose();
             })
         }).catch((e) => {
-            Message.error(e.message);
+            message.error(e.message);
             this.setState({
                 loading: false
             })

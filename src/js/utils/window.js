@@ -130,8 +130,8 @@ function gotoRegisterPage() {
     window.location.hash = '/auth/register';
 }
 
-function openResetPasswordPage() {
-    window.location.hash = '/settings/password';
+function openSettingSecurityPage() {
+    window.location.hash = '/settings/security';
 }
 
 /**
@@ -153,6 +153,7 @@ export {
     gotoLoginPage,
     gotoRegisterPage,
     isOpenWindow,
+    openSettingSecurityPage,
     openWindow,
     openTab,
 };

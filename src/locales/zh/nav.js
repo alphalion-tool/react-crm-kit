@@ -12,4 +12,8 @@ export default {
 
     'nav.new.user': 'Create User',
     'nav.help': 'Help',
+
+    'nav.settings': 'Settings',
+    'nav.settings.security': 'Security'
+
 };

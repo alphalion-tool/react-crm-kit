@@ -4,7 +4,7 @@
 * 
 */
 /* eslint-disable */
-import { Message, Notification } from 'antd';
+import { message, Notification } from 'antd';
 
 const host = window.location.host;
 const protocol = window.location.protocol;
@@ -34,7 +34,7 @@ const communication = {
                             let value = JSON.parse(val.data);
                             let item = this.listeners && this.listeners[value.type]
                             if (value.code === 2 ) {
-                                Message.error('No permission!');
+                                message.error('No permission!');
                                 item.fn(value)
                                 return
                             }

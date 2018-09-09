@@ -3,7 +3,7 @@
 import React, { PureComponent } from 'react';
 import { bind } from 'decko';
 import Container from 'jscom/components/app/Container';
-import { Message } from 'antd';
+import { message } from 'antd';
 import { containerInject } from 'jscom/utils/decorators';
 import UserPanel from 'jscom/routes/UserInfo/components/UserPanel';
 import UserSchema from 'jscom/schemas//UserSchema';
@@ -28,7 +28,7 @@ export class PureUserNew extends PureComponent {
                 status: '',
                 user: new UserSchema({})
             })
-            Message.success(`Create User(${ret.userId}) Done!`);
+            message.success(`Create User(${ret.userId}) Done!`);
             this.tabClose(() => {
                 windows.openUserInfo(ret.userId);
             })
@@ -36,7 +36,7 @@ export class PureUserNew extends PureComponent {
             this.setState({
                 status: ''
             })
-            Message.error(`Create User Error(${e.message})`);
+            message.error(`Create User Error(${e.message})`);
         })
     }
 

@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bind } from 'decko';
-import { Message } from 'antd';
+import { message } from 'antd';
 import { connect } from 'react-redux';
 import Container from 'jscom/components/app/Container';
 import { containerInject } from 'jscom/utils/decorators';
@@ -66,7 +66,7 @@ export class PureUserInfo extends Component {
                 user: UserSchema.fromAPI(ret)
             })
         }).catch((e) => {
-            Message.error(e.message);
+            message.error(e.message);
             this.setState({
                 status: ''
             })
@@ -90,7 +90,7 @@ export class PureUserInfo extends Component {
             this.setState({
                 status: ''
             })
-            Message.error(e.message);
+            message.error(e.message);
         })
     }
 
@@ -105,7 +105,7 @@ export class PureUserInfo extends Component {
             this.setState({
                 resetTokenStatus: 'success',
             });
-            Message.success(`Reset Success! The new google auth code had sent to ${data.email}`, 6);
+            message.success(`Reset Success! The new google auth code had sent to ${data.email}`, 6);
             setTimeout(() => {
                 this && this.setState({ resetTokenStatus: '' })
             }, 4000);
@@ -113,7 +113,7 @@ export class PureUserInfo extends Component {
             this.setState({
                 resetTokenStatus: 'error'
             });
-            Message.error(e.message);
+            message.error(e.message);
         })
     }
 
@@ -128,7 +128,7 @@ export class PureUserInfo extends Component {
             this.setState({
                 resetPasswordStatus: 'success',
             });
-            Message.success(`Reset Success! The new password had sent to ${data.email}`, 6);
+            message.success(`Reset Success! The new password had sent to ${data.email}`, 6);
             setTimeout(() => {
                 this && this.setState({ resetPasswordStatus: '' })
             }, 4000);
@@ -136,7 +136,7 @@ export class PureUserInfo extends Component {
             this.setState({
                 resetPasswordStatus: 'error'
             });
-            Message.error(e.message);
+            message.error(e.message);
         })
     }
 

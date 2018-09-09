@@ -6,7 +6,7 @@ import { bind } from 'decko';
 import { connect } from 'react-redux';
 import Container from 'jscom/components/app/Container';
 import { containerInject } from 'jscom/utils/decorators';
-import { Select, Button, Message, Input } from 'antd';
+import { Select, Button, message, Input } from 'antd';
 import AppActions from 'jscom/actions/app';
 import './Settings.scss';
 import services from 'jscom/services';
@@ -55,17 +55,17 @@ export class PureSettings extends Component {
         const params = {};
 
         if (!oldPassword) {
-            Message.error('Please Input Old Password');
+            message.error('Please Input Old Password');
             return;
         }
 
         if (!newPassword) {
-            Message.error('Please Input New Password');
+            message.error('Please Input New Password');
             return;
         }
 
         if (newPassword !== confirmPassword || !newPassword) {
-            Message.error('Confirm Password do not math!');
+            message.error('Confirm Password do not math!');
             return;
         }
 
@@ -74,14 +74,14 @@ export class PureSettings extends Component {
 
         services.authPassword(params).then((res) => {
             this.logger.log(res);
-            Message.success('Change Password Success!');
+            message.success('Change Password Success!');
             this.setState({
                 newPassword: '',
                 oldPassword: '',
                 confirmPassword: ''
             })
         }).catch((e) => {
-            Message.error(e.message);
+            message.error(e.message);
         })
     }
 

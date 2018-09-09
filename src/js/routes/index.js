@@ -4,6 +4,7 @@ import AccountList from './AccountList';
 import UserList from './UserList';
 import UserNew from './UserNew';
 import Help from './Help';
+import Settings from './Settings';
 // import UserInfo from './UserInfo';
 // import Tools from './Tools';
 
@@ -13,6 +14,7 @@ const baseRoutes = [
     AccountList,
     UserList,
     Help,
+    Settings,
 
     // top nav
     // Maintenance,

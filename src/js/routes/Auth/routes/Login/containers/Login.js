@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bind } from 'decko';
 import { intlInject, loggerInject } from 'jscom/utils/decorators';
-import { Button, Input, Checkbox, Message, Icon } from 'antd';
+import { Button, Input, Checkbox, message, Icon } from 'antd';
 import { gotoRegisterPage } from 'jscom/utils/window';
 import './Login.scss';
 
@@ -83,10 +83,10 @@ class Login extends Component {
         const { name, password } = this.state;
         if (e.key === 'Enter') { // Login按钮必须要是可以点击的
             if (!name) {
-                Message.error('Username is required!');
+                message.error('Username is required!');
                 return;
             } else if (!password) {
-                Message.error('Password is required!');
+                message.error('Password is required!');
                 return;
             }
             this.handleSignIn();

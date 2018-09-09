@@ -4,7 +4,7 @@ import ErrorBoundary from 'jscom/components/app/ErrorBoundary';
 
 export default {
     name: 'Settings',
-    path: '/settings/password',
+    path: '/settings/security',
     component: loadable({
         loader: () => import(/* webpackChunkName: "Settings" */'./containers/Settings'),
         render (loaded, props, store) {

@@ -21,7 +21,7 @@ export default class Help extends PureComponent {
         return (
             <div className="s-content-root u-fixed--center s-content__background-image" style={contentStyle} >
                 <div className="s-content--help">
-                    <div className="s-content--help__word">This is Help</div>
+                    <div className="s-content--help__word">This is help page</div>
                 </div>
             </div>
         );

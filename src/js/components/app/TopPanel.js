@@ -37,10 +37,7 @@ export default class TopPannel extends Component {
     }
 
     handlePasswordChange = () => {
-        windows.openResetPasswordPage();
-        // this.setState({
-            // pwdModalVisible: !this.state.pwdModalVisible
-        // })
+        windows.openSettingSecurityPage();
     }
 
     renderMenu () {

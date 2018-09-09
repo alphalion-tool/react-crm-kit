@@ -7,7 +7,7 @@ import Cookie from 'react-cookie';
 import { bind } from 'decko';
 import ReactRouterProps from 'react-router-prop-types';
 import SideBar from 'jscom/components/app/SideBar';
-import { Message, Modal } from 'antd';
+import { message, Modal } from 'antd';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { auth as AuthActions, app as AppActions } from 'jscom/actions';
 import { loggerInject } from 'jscom/utils/decorators';
@@ -183,7 +183,7 @@ class App extends Component {
     handleAuthExpired (withoutTip: bool) {
         // 如果已经有了，则只显示一个
         if (this.state.idleLogoutVisible) return;
-        if (!withoutTip) Message.error('Login status has expired');
+        if (!withoutTip) message.error('Login status has expired');
         const path = this.props.location.pathname;
         if (!path.startsWith('/auth')) {
             LocalStore.setRedirectUrl(`${path}${this.props.location.search}`);

@@ -75,6 +75,13 @@ const allRoutes = [
         hidden: true,
         icon: 'dashboard'
     },
+    {
+        id: 'nav.settings',
+        lang_id: 'nav.settings.security',
+        route: '/settings/security',
+        hidden: true,
+        icon: 'lock'
+    }
 ];
 
 const sideRoutes = allRoutes.filter((item) => !item.hidden);
