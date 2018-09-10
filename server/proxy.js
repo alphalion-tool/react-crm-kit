@@ -70,25 +70,16 @@ function proxyIndex(isHttps, proxyServer, proxyPath) {
                     params = {
                         data: {
                             permission: {},
-                            businessDate: '2017-12-12',
                             isLoggedIn: false,
-                            name: 'Bitbal Pro',
-                            user: {},
-                            constants: {},
+                            user: {}
                         }
                     }
                 }
                 const body = params.data;
                 const dataObject = lodash.merge({}, {
                     permission: JSON.stringify(body.permission),
-                    businessDate: body.businessDate,
                     login: body.isLoggedIn,
-                    debug: false,
-                    dev: true,
-                    title: 'Bitbal Pro',
-                    name: body.name,
-                    user: JSON.stringify(body.user),
-                    constants: JSON.stringify(body.constants),
+                    user: JSON.stringify(body.user)
                 });
                 res.set('Content-Type', 'text/html');
                 res.render('index.pug', dataObject, (err, html) => {

@@ -6,8 +6,6 @@
 import { createReducers } from 'jscom/store/redux-tool';
 import { actionIds } from '../actions/cache';
 import CompanySchema from 'jscom/schemas//CompanySchema';
-import { startCase } from 'jscom/utils/lodash';
-import { firstUpperCase } from 'jscom/utils/common';
 
 export const initialState = {
     /* 针对user的数据 */

@@ -1,5 +1,4 @@
 
-import timeoutPromise, { defaultTime } from 'jscom/utils/timeoutPromise';
 import { message } from 'antd';
 
 export default ({ dispatch, getState }) => (next) => (action) => {

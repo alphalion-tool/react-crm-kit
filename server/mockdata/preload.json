@@ -1,0 +1,136 @@
+{
+    "code": 0,
+    "msg": "Success",
+    "data": {
+        "currencyList": [
+            {
+                "value": "btc",
+                "label": "BTC"
+            },
+            {
+                "value": "eth",
+                "label": "ETH"
+            },
+            {
+                "value": "xrp",
+                "label": "XRP"
+            },
+            {
+                "value": "ltc",
+                "label": "LTC"
+            },
+            {
+                "value": "bch",
+                "label": "BCH"
+            },
+            {
+                "value": "etc",
+                "label": "ETC"
+            },
+            {
+                "value": "zec",
+                "label": "ZEC"
+            },
+            {
+                "value": "iota",
+                "label": "IOTA"
+            },
+        ],
+        "currencyPairList": [
+            {
+                "value": "btc-usdt",
+                "label": "BTC-USDT"
+            },
+            {
+                "value": "eth-usdt",
+                "label": "ETH-usdt"
+            },
+            {
+                "value": "xrp-usdt",
+                "label": "XRP-USDT"
+            },
+            {
+                "value": "ltc-usdt",
+                "label": "LTC-USDT"
+            },
+            {
+                "value": "bch",
+                "label": "BCH"
+            },
+            {
+                "value": "etc",
+                "label": "ETC"
+            },
+            {
+                "value": "zec",
+                "label": "ZEC"
+            },
+            {
+                "value": "iota",
+                "label": "IOTA"
+            },
+        ],
+        "country": [{
+            "code": "AUS",
+            "enUs": "Australia",
+            "zhCn": "澳大利亚",
+            "ja": "オーストラリア"
+        },
+        {
+            "code": "CAN",
+            "enUs": "Canada",
+            "zhCn": "加拿大",
+            "ja": "カナダ"
+        }, {
+            "code": "CHE",
+            "enUs": "Switzerland",
+            "zhCn": "瑞士",
+            "ja": "スイス"
+        }, {
+            "code": "CHL",
+            "enUs": "Chile",
+            "zhCn": "智利",
+            "ja": "チリ"
+        }, {
+            "code": "CHN",
+            "enUs": "China",
+            "zhCn": "中国",
+            "ja": "中国"
+        }, {
+            "code": "DEU",
+            "enUs": "Germany",
+            "zhCn": "德国",
+            "ja": "ドイツ"
+        }, {
+            "code": "DNK",
+            "enUs": "Denmark",
+            "zhCn": "丹麦",
+            "ja": "デンマーク"
+        }, {
+            "code": "FRA",
+            "enUs": "France",
+            "zhCn": "法国",
+            "ja": "フランス"
+        }, {
+            "code": "GBR",
+            "enUs": "United Kingdom",
+            "zhCn": "英国",
+            "ja": "イギリス"
+        }, {
+            "code": "IND",
+            "enUs": "India",
+            "zhCn": "印度",
+            "ja": "インド"
+        }, {
+            "code": "JPN",
+            "enUs": "Japan",
+            "zhCn": "日本",
+            "ja": "日本"
+        }, {
+            "code": "KOR",
+            "enUs": "South Korea",
+            "zhCn": "韩国",
+            "ja": "大韓民国"
+        }]
+    }
+}

@@ -36,9 +36,14 @@ export function indexPost (req, res) {
     return res.json(json);
 }
 
+export function preload (req, res) {
+    return res.json(readJson('preload.json'));
+}
+
 const controls = [
     { path: '/', fn: index },
     { path: '/', fn: indexPost, method: 'post' },
+    { path: '/api/preload', fn: preload }
 ];
 
 export default controls;
