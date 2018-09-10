@@ -1,5 +1,6 @@
 import Auth from './Auth';
 import AccountList from './AccountList';
+import DepositList from './DepositList';
 // import Maintenance from './Maintenance';
 import UserList from './UserList';
 import UserNew from './UserNew';
@@ -12,6 +13,7 @@ const baseRoutes = [
     // Welcome,
     Auth,
     AccountList,
+    DepositList,
     UserList,
     Help,
     Settings,

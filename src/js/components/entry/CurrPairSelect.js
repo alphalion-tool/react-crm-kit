@@ -35,7 +35,15 @@ const pairList = [
     }
 ];
 
-export default class CryptoCurrSelect extends Component {
+type CurrPairSelectProps = {
+    value?: string,
+    onChange?: (value?: '', id?: string) => void,
+};
+
+
+export default class CurrPairSelect extends Component {
+
+    props: CurrPairSelectProps
 
     render () {
         return (
