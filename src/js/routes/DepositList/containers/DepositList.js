@@ -34,25 +34,9 @@ export class PureDepositList extends Component {
         super(props);
         this.state = {
             status: '',
-            tableWidth: 400,
-            tableHeight: 300,
             hasFetched: false,
             querys: getInitialQuery()
         };
-    }
-
-    componentDidMount () {
-        this.resizeComponent();
-    }
-
-    resizeComponent() {
-        const size = getComponentSize(this.refBody);
-        if (this.refBody && size.width) {
-            this.setState({
-                tableWidth: size.width - 40,
-                tableHeight: size.height - 20,
-            });
-        }
     }
 
     refBodySet = (r) => {
@@ -80,7 +64,7 @@ export class PureDepositList extends Component {
     }
 
     renderTable = () => {
-        const { tableList, tableWidth, tableHeight, hasFetched, tableTools } = this.state;
+        const { tableList, hasFetched, tableTools } = this.state;
         const { status, depositList } = this.props;
 
         const rowSelection = {

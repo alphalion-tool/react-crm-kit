@@ -61,6 +61,9 @@ function getStatusColor (status) {
         case 'pending':
             result = '#1890ff';
             break;
+        case 'finish':
+            result = '';
+            break;
         default:
             break;
     }
@@ -68,7 +71,7 @@ function getStatusColor (status) {
     return result;
 }
 
-export function processTabelItem (item) {
+function processTabelItem (item) {
     return {
         ...item,
         key: item.id,
@@ -80,10 +83,12 @@ export function processTabelItem (item) {
     };
 }
 
-export function processTableData (arr = []) {
+function processTableData (arr = []) {
     return arr.map(item => processTabelItem(item));
 }
 
 export {
     columns,
+    processTableData,
+    processTabelItem,
 }
