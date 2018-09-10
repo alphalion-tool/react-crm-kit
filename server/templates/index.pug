@@ -27,15 +27,10 @@ html
 
   script(type="text/javascript", src="/static/vendors.js?__v__")
   script.
-    window.__DEBUG__ = #{debug};
-    window.__DEV__ = #{dev};
     window.__data = {
       isLoggedIn: #{login},
       permission: !{permission},
-      businessDate: "#{businessDate}",
-      name: "#{name}",
-      user: !{user},
-      constants: !{constants}
+      user: !{user}
     };
   script(type="text/javascript", src="/static/main.js?__v__")
   script(type="text/javascript", src="/static/index.js?__v__")

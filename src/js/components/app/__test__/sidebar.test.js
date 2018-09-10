@@ -2,12 +2,10 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { attachMount } from 'jstest/helpers/enzyme';
-import { newDiv } from 'jstest/helpers/dom';
-import { timeoutPromise } from 'jstest/helpers/common';
 import mockIntl, { mountWithIntl, intlMethodInject } from 'jstest/helpers/intl';
 import { containerMethodInject } from 'jstest/helpers/decorator';
 import SideBar from '../SideBar';
-import SideBarConfig from 'jscom/config/sidebar';
+import SideBarConfig from 'jscom/config/navbar';
 
 const PureSideBar = containerMethodInject(SideBar.WrappedComponent);
 
@@ -15,14 +13,6 @@ xdescribe('<SideBar />', () => {
 
     let div,
         wrapper;
-
-
-    afterEach((done) => {
-        timeoutPromise().then(() => {
-            div && div.remove();
-            done();
-        });
-    })
 
     it('render <SideBar /> login status', () => {
 
