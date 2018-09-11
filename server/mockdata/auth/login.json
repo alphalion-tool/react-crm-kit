@@ -1,15 +1,13 @@
 {
     "code": 0,
     "user": {
-        "userName": "juju",
+        "userName": "admin",
         "userId": 12801,
-        "email": "juju@x.com",
+        "email": "admin@x.com",
         "phone": "1xxx",
         "firstName": "ju",
         "lastName": "ju",
         "description": null,
-        "companyId": 1007,
-        "companyName": "jujucpy"
     },
     "permission": {
        

@@ -18,12 +18,12 @@
         },
         "isLoggedIn": true,
         "user": {
-            "userName": "juju",
+            "userName": "admin",
             "userId": 34,
-            "email": "jujuxx@gmail.com",
+            "email": "admin@x.com",
             "phone": null,
-            "firstName": "ju",
-            "lastName": "ju",
+            "firstName": "admin",
+            "lastName": "",
             "description": null,
         }
     }
