@@ -7,7 +7,6 @@ import Container from 'jscom/components/app/Container';
 import { containerInject, connectPermission } from 'jscom/utils/decorators';
 import { Table } from 'antd';
 import * as windows from 'jscom/utils/window';
-import { getComponentSize } from 'jscom/utils/dom';
 import AccountListQuery from '../components/AccountListQuery';
 import { columns as COLUMNS } from '../config/table';
 import Actions from '../modules/action';
@@ -32,8 +31,6 @@ export class PureAccountList extends Component {
         super(props);
         this.state = {
             status: '',
-            tableWidth: 400,
-            tableHeight: 300,
             hasFetched: false,
         };
     }
@@ -58,9 +55,6 @@ export class PureAccountList extends Component {
             case 'userId':
                 windows.openUserInfo(rowData.userId);
                 break;
-            case 'companyName':
-                windows.openCompanyInfo(rowData.companyId);
-                break;
             default:
                 break;
         }
@@ -72,7 +66,6 @@ export class PureAccountList extends Component {
     }
 
     renderTable = () => {
-        const { hasFetched } = this.state;
         const { status, accountList } = this.props;
         return (
             <Table
