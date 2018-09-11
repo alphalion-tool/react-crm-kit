@@ -12,10 +12,8 @@ import AccountListQuery from '../components/AccountListQuery';
 import { columns as COLUMNS } from '../config/table';
 import Actions from '../modules/action';
 
-export function mapState2Props (store, ownProps) {
-
+export function mapState2Props (store) {
     const { status, accountList } = store.accountList || {};
-
     return {
         status,
         accountList
@@ -38,20 +36,6 @@ export class PureAccountList extends Component {
             tableHeight: 300,
             hasFetched: false,
         };
-    }
-
-    componentDidMount () {
-        this.resizeComponent();
-    }
-
-    resizeComponent() {
-        const size = getComponentSize(this.refBody);
-        if (this.refBody && size.width) {
-            this.setState({
-                tableWidth: size.width - 40,
-                tableHeight: size.height - 20,
-            });
-        }
     }
 
     refBodySet = (r) => {
@@ -88,7 +72,7 @@ export class PureAccountList extends Component {
     }
 
     renderTable = () => {
-        const { tableList, tableWidth, tableHeight, hasFetched, tableTools } = this.state;
+        const { hasFetched } = this.state;
         const { status, accountList } = this.props;
         return (
             <Table

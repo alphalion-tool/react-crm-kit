@@ -27,10 +27,6 @@ const baseRoutes = [
     // UserInfo,
 ];
 
-if (process.env.NODE_ENV === 'development') {
-    // baseRoutes.unshift(Demo);
-}
-
 // 处理route中的childRoutes情况
 function processRouteConfig(routes = []) {
     const tmpRoutes = [];
