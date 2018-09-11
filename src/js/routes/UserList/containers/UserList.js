@@ -45,20 +45,6 @@ export class PureUserList extends Component {
         };
     }
 
-    componentDidMount () {
-        this.resizeComponent();
-    }
-
-    resizeComponent() {
-        const size = getComponentSize(this.refBody);
-        if (this.refBody && size.width) {
-            this.setState({
-                tableWidth: size.width - 40,
-                tableHeight: size.height - 20,
-            });
-        }
-    }
-
     refBodySet = (r) => {
         this.refBody = r;
     }
@@ -79,12 +65,6 @@ export class PureUserList extends Component {
             case 'userId':
                 windows.openUserInfo(rowData.userId);
                 break;
-            case 'companyName':
-                windows.openCompanyInfo(rowData.companyId);
-                break;
-            case 'correspondentName':
-                windows.openCorrespondentInfo(rowData.correspondentId);
-                break;
             default:
                 break;
         }
@@ -96,12 +76,13 @@ export class PureUserList extends Component {
     }
 
     renderTable = () => {
-        const { tableList, tableWidth, tableHeight, hasFetched, tableTools } = this.state;
         const { status, userList } = this.props;
         return (
             <Table
                 dataSource={userList}
                 columns={COLUMNS}
+                size="small"
+                scroll={{ x: true }}
             />
         );
     }

@@ -130,7 +130,7 @@ export class PureNavBar extends Component {
     }
 
     render() {
-        const { isLoggedIn, siteName, authName } = this.props;
+        const { isLoggedIn, authName } = this.props;
         const { selectedKeys, navs } = this.state;
 
         return (
@@ -144,8 +144,7 @@ export class PureNavBar extends Component {
                     isLogin={isLoggedIn}
                     onLogout={this.props.onLogout}
                     onRemind={this.props.onRemind}
-                    name={authName}
-                    businessDate={window.__DATA__.BUSINESS_DATE}
+                    userName={authName}
                 />
             </div>
         );

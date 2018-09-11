@@ -251,7 +251,7 @@ class App extends Component {
             <div className={cls}>
                 {isLoggedIn && <SideBar
                     siteName={siteName}
-                    authName={authName}
+                    userName={authName}
                     isLoggedIn={isLoggedIn}
                     router={this.props.router}
                     onPushRoute={this.handlePushRoute}
@@ -261,7 +261,7 @@ class App extends Component {
                 />}
                 {isLoggedIn && <NavCrumb
                     siteName={siteName}
-                    authName={authName}
+                    userName={authName}
                     isLoggedIn={isLoggedIn}
                     router={this.props.router}
                     onPushRoute={this.handlePushRoute}

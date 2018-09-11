@@ -235,7 +235,7 @@ export class SideBar extends Component {
 
     render() {
         const { isLoggedIn, collapsed, siteName, onSettings } = this.props;
-        const { openKeys, selectedKeys, navs, authName } = this.state;
+        const { openKeys, selectedKeys, navs } = this.state;
 
         return (
             <div className={classNames('s-sidebar', { 's-sidebar--collapsed': collapsed })}>

@@ -1,7 +1,6 @@
 /* eslint-disable no-unreachable */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-// import Link from 'react-router/lib/Link';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Icon } from 'antd';
 import Navs, { flattenNav, getNavItemWithRoute } from 'jscom/config/navbar';
@@ -18,7 +17,7 @@ const propTypes = {
     permission: PropTypes.object.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
 
-    authName: PropTypes.string,
+    userName: PropTypes.string,
 
     onPushRoute: PropTypes.func.isRequired,
     onRemind: PropTypes.func,
@@ -75,7 +74,7 @@ class NavCrumb extends PureComponent {
     }
 
     render() {
-        const { isLoggedIn, authName, path, content } = this.props;
+        const { isLoggedIn, userName, path, content } = this.props;
         
         if (content) {
             return (
@@ -102,8 +101,7 @@ class NavCrumb extends PureComponent {
                     isLogin={isLoggedIn}
                     onLogout={this.props.onLogout}
                     onRemind={this.props.onRemind}
-                    name={authName}
-                    businessDate="2018/09/07"
+                    userName={userName}
                 />
 
             </div>

@@ -4,9 +4,11 @@
 
 import React, { Component } from 'react'; 
 import PropTypes from 'prop-types';
+import { bind } from 'decko';
 import { Icon, Input, Dropdown, Menu } from 'antd';
 import PasswordModal from 'jscom/routes/Settings/components/PasswordModal';
 import * as windows from 'jscom/utils/window';
+import { todayStr } from 'jscom/utils/time';
 import './TopPanel.scss';
 
 const propTypes = {
@@ -15,11 +17,11 @@ const propTypes = {
     onLogout: PropTypes.func,
     onRemind: PropTypes.func,
     // 登录用户名
-    name: PropTypes.string,
+    userName: PropTypes.string,
     businessDate: PropTypes.string,
 };
 
-export default class TopPannel extends Component {
+export default class TopPannel extends Component {  // eslint-disable-line
 
     static propTypes = propTypes;
 
@@ -32,11 +34,13 @@ export default class TopPannel extends Component {
         };
     }
 
-    handleVisibleChange = (visible) => {
+    @bind
+    handleVisibleChange (visible) {
         this.setState({ visible });
     }
 
-    handlePasswordChange = () => {
+    @bind
+    handlePasswordChange () {
         windows.openSettingSecurityPage();
     }
 
@@ -55,17 +59,18 @@ export default class TopPannel extends Component {
     }
 
     render() {
-        const { isLogin, onRemind, name, businessDate } = this.props;
+        const { isLogin, onRemind, userName } = this.props;
         const { visible, pwdModalVisible } = this.state;
+        const curDay = todayStr();
         // {false && <Icon type="bell" onClick={onRemind} />}
         return (
             <div className="s-top-panel__root">
                 {isLogin && <div className="s-top-panel">
                     <div className="s-top-panel__right">
-                        <span className="s-top-panel__bisdate">{businessDate}</span>
+                        <span className="s-top-panel__bisdate">{curDay}</span>
 
                         <Dropdown className="s-top-panel__name" overlay={this.renderMenu()} onVisibleChange={this.handleVisibleChange}>
-                            <p>{name}&nbsp;<Icon type={visible ? 'caret-up' : 'caret-down'} /></p>
+                            <p>{userName}&nbsp;<Icon type={visible ? 'caret-up' : 'caret-down'} /></p>
                         </Dropdown>
                     </div>
                 </div>}
