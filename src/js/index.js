@@ -20,18 +20,26 @@ window.__DATA__ = {};
 
 store.dispatch(AuthActions.switchAuth(window.__data));
 
-let div = document.getElementById('wrap');
-if (!div) {
-    div = document.createElement('div');
-    document.body.appendChild(div);
+function render(Component) {
+    ReactDOM.render(
+        <ReduxProvider store={store}>
+            <IntlProvider>
+                <HashRouter>
+                    <Route path="/" component={Component} />
+                </HashRouter>
+            </IntlProvider>
+        </ReduxProvider>,
+        document.getElementById('wrap'),
+    );
 }
-ReactDOM.render((
-    <ReduxProvider store={store}>
-        <IntlProvider>
-            <HashRouter>
-                <Route path="/" component={App} />
-            </HashRouter>
-        </IntlProvider>
-    </ReduxProvider>
-), div);
 
+render(App);
+
+if (module.hot) {
+    module.hot.accept('./containers/App', () => {
+        // eslint-disable-next-line
+        const NextApp = require('./containers/App').default;
+        render(NextApp);
+        console.log('app update'); // eslint-disable-line 
+    });
+}
