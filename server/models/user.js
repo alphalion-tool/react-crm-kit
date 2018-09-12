@@ -42,6 +42,17 @@ const UserSchema = new Schema({
     creator: {
         type: ObjectId,
         ref: 'User'
+    },
+    permission: {
+        type: Object,
+        default: {
+            user: {
+                add: true,
+                view: true,
+                edit: true,
+                query: true
+            },
+        }
     }
 });
 
@@ -142,7 +153,7 @@ UserSchema.methods = {
      */
     authenticate: function(plainText) {
         return true;
-        // return this.encryptPassword(plainText) === this.hashed_password;
+        // return this.encryptPassword(plainText) === this.hashedPassword;
     },
 
     /**

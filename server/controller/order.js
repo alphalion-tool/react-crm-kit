@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import wrap from 'co-express';
+import * as codes from '../constants/code';
 import { readJson } from '../util';
 
 const Order = mongoose.model('Order');
@@ -7,7 +8,7 @@ const Order = mongoose.model('Order');
 const load = wrap(function* (req, res, next, id) {
     const order = yield Order.load({ conditions: { orderId: Number(id) } });
     req.order = order;
-    if (!req.order) next({ code: 1, msg: 'Order not found' });
+    if (!req.order) next({ code: codes.NOT_FOUND, msg: 'Order not found' });
     else next();
 });
 
@@ -15,12 +16,12 @@ const orderList = wrap(function* (req, res) {
     // return res.json(readJson('order/list.json'));
     const count = yield Order.countDocuments();
     const orders = yield Order.list({ page: req.query.page, size: req.query.size });
-    res.json({ code: 0, data: { count, data: orders } });
+    res.json({ code: codes.SUCCESS, data: { count, data: orders } });
 });
 
 function orderInfo (req, res, next) {
     // return res.json(readJson('order/info.json'));
-    return res.json({ code: 0, data: req.order });
+    return res.json({ code: codes.SUCCESS, data: req.order });
 }
 
 const orderAdd = wrap(function* (req, res, next) {
@@ -38,9 +39,9 @@ const orderAdd = wrap(function* (req, res, next) {
     });
     try {
         order = yield order.save();
-        return res.json({ code: 0, data: order });
+        return res.json({ code: codes.SUCCESS, data: order });
     } catch (e) {
-        return res.json({ code: 1, msg: e.message });
+        return res.json({ code: codes.PARAM_ERROR, msg: e.message });
     }
 });
 

@@ -35,12 +35,7 @@ export function hubController (app) {
             app.param(route.name, route.fn);
             return;
         }
-        if (method === 'get') {
-            app.get(route.path, route.fn);
-        }
-        if (method === 'post') {
-            app.post(route.path, route.fn);
-        }
+        app[method](route.path, route.fn);
     });
     return app;
 }

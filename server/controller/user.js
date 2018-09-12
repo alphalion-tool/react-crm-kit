@@ -1,6 +1,7 @@
 
 import mongoose from 'mongoose';
 import wrap from 'co-express';
+import * as codes from '../constants/code';
 import { readJson } from '../util';
 
 const User = mongoose.model('User');
@@ -8,7 +9,7 @@ const User = mongoose.model('User');
 const load = wrap(function* (req, res, next, userId) {
     const user = yield User.load({ conditions: { userId: Number(userId) } });
     req.user = user;
-    if (!req.user) next({ code: 1, msg: 'User not found' });
+    if (!req.user) next({ code: codes.NOT_FOUND, msg: 'User not found' });
     else next();
 });
 
@@ -16,13 +17,13 @@ const userList = wrap(function* (req, res) {
     // return res.json(readJson('user/list.json'));
     const count = yield User.countDocuments();
     const users = yield User.list({ page: req.query.page, size: req.query.size });
-    res.json({ code: 0, data: { count, data: users } });
+    res.json({ code: codes.SUCCESS, data: { count, data: users } });
 });
 
 
 const userInfo = (req, res, next) => {
     // return res.json(readJson('user/info.json'));
-    return res.json({ code: 0, data: req.user });
+    return res.json({ code: codes.SUCCESS, data: req.user });
 }
 
 const userAdd = wrap(function* (req, res, next) {
@@ -39,9 +40,9 @@ const userAdd = wrap(function* (req, res, next) {
     });
     try {
         user = yield user.save();
-        return res.json({ code: 0, data: user });
+        return res.json({ code: codes.SUCCESS, data: user });
     } catch (e) {
-        return res.json({ code: 1, msg: e.message });
+        return res.json({ code: codes.PARAM_ERROR, msg: e.message });
     }
 });
 

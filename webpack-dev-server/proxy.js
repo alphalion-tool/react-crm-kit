@@ -63,17 +63,10 @@ function proxyIndex({ isHttps, domain, pathname }) {
                     params = JSON.parse(data.toString('utf-8'));
                 } catch (error) {
                     console.error(error);
-                    params = {
-                        data: {
-                            permission: {},
-                            isLoggedIn: false,
-                            user: {}
-                        }
-                    }
+                    params = { data: { isLoggedIn: false, user: {} } };
                 }
                 const body = params.data;
                 const dataObject = lodash.merge({}, {
-                    permission: JSON.stringify(body.permission),
                     login: body.isLoggedIn,
                     user: JSON.stringify(body.user)
                 });

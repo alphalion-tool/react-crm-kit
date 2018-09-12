@@ -4,8 +4,8 @@
     
     // proxy server config
     "proxyServer": {
-        "domain": "ex.bitbal.top:80",
-        // "domain": "localhost:9092",
+        // "domain": "ex.bitbal.top:80",
+        "domain": "localhost:9092",
         "isHttps": false,
         "pathname": "",
         "wsPathname": "/ws"

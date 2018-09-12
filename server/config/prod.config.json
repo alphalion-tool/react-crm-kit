@@ -1,5 +1,6 @@
 {
     
     "port": 9092,
-    "db": "mongodb://localhost:27017/react_crm_kit"
+    "db": "mongodb://localhost:27017/react_crm_kit",
+    "log": "logs"
 }

@@ -32,7 +32,7 @@ const propTypes = {
     children: PropTypes.element,
     permission: PropTypes.object,
     history: PropTypes.object,
-    authName: PropTypes.string,
+    userName: PropTypes.string,
     router: PropTypes.object,
     location: ReactRouterProps.location,
     match: PropTypes.object
@@ -45,11 +45,11 @@ export function mapStore2Props(store) {
         user
     } = store.app || {};
 
-    const { isLoggedIn, authName } = store.auth || {};
+    const { isLoggedIn, userName } = store.auth || {};
 
     return {
         isLoggedIn,
-        authName,
+        userName,
         warning,
         permission,
         user
@@ -71,7 +71,6 @@ class App extends Component {
         this.isOpenWindow = isOpenWindow();
         this.routerContent = this.renderChildren();
         this.state = {
-            authName: props.authName,
             permission: props.permission,
             collapsed: Cookie.load('collapsed') === '1',
             reminderStatus: false,
@@ -128,11 +127,6 @@ class App extends Component {
             this.resetChildContext(nextProps.permission);
             this.setState({
                 permission: nextProps.permission
-            });
-        }
-        if (nextProps.authName !== this.props.authName) {
-            this.setState({
-                authName: nextProps.authName
             });
         }
     }
@@ -240,8 +234,8 @@ class App extends Component {
     }
 
     render() {
-        const { authName, collapsed, permission } = this.state;
-        const { location, isLoggedIn } = this.props;
+        const { collapsed, permission } = this.state;
+        const { location, isLoggedIn, userName } = this.props;
         const siteName = 'BitBal Pro';
         const cls = classNames('app-container', {
             'app-container--logout': !isLoggedIn
@@ -251,7 +245,7 @@ class App extends Component {
             <div className={cls}>
                 {isLoggedIn && <SideBar
                     siteName={siteName}
-                    userName={authName}
+                    userName={userName}
                     isLoggedIn={isLoggedIn}
                     router={this.props.router}
                     onPushRoute={this.handlePushRoute}
@@ -261,7 +255,7 @@ class App extends Component {
                 />}
                 {isLoggedIn && <NavCrumb
                     siteName={siteName}
-                    userName={authName}
+                    userName={userName}
                     isLoggedIn={isLoggedIn}
                     router={this.props.router}
                     onPushRoute={this.handlePushRoute}

@@ -36,7 +36,7 @@ const actions = createActions({
      */
     switchAuth: ({ isLoggedIn, user, ...others }) => ({
         isLoggedIn,
-        authName: user && user.userName ? user.userName : '',
+        userName: user && user.userName ? user.userName : '',
         user,
         ...others
     })

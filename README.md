@@ -2,7 +2,7 @@
 该项目来源于公司内部的一个产品（金融相关），产品涉及到多达200个模块、用户权限管理、多语言等特性。在项目完成之际，在移除了内部的业务、组件库、分屏、权限管理等功能后，将框架开源出来，方便其他人使用，同时也想让更多人参与到架构优化中。目前使用组件库[Antd](https://ant.design/)，图标库则使用[BizCharts](https://alibaba.github.io/BizCharts/index.html)，依托于`redux`进行本地数据管理，路由使用`react-router`中的hash方式，测试方面，使用`jasmine`作为单元测试runner。整个项目的数据是使用的假数据，模拟的是加密货币交易所内部的管理系统。开发上则前后端分离的开发方式，所以部署时需要约束静态文件目录位置，以及模板里的数据内容。同时使用react flow作为类型检测。
 
 
-[Demo View](http://ex.bitbal.top)    用户名和密码任意
+[Demo View](http://ex.bitbal.top)    用户名(admin1), 密码任意
 
 
 ### 1，快速使用

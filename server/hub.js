@@ -11,10 +11,6 @@ moment.tz.setDefault('Asia/Shanghai');
 
 // hub db
 export function hubDB (config, callback) {
-    if (config.useProxy) {
-        callback();
-        return;
-    }
     // read models from models dir
     const modelPath = path.join(__dirname, 'models');
     fs.readdirSync(modelPath).forEach(file => require(path.join(modelPath, file))); // eslint-disable-line

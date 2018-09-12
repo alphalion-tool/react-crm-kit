@@ -61,11 +61,10 @@ export default createReducers(initialState, {
 
     // login success，这里取得permisson
     [`${authActions.login}-success`]: (state, { body }) => {
-        const res = body;
-        const permission = res.permission;
-        const user = res.user;
+        const user = body.data;
+        const permission = user.permission;
         // 登录成功，这里进行环境初始化
-        processAppEnv({ ...res, isLoggedIn: true });
+        processAppEnv({ user, permission, isLoggedIn: true });
 
         return {
             ...state,
@@ -90,6 +89,7 @@ export default createReducers(initialState, {
 
         processAppEnv({
             user,
+            permission: user ? user.permission : {},
             ...others
         });
 

@@ -1,6 +1,7 @@
 
 import mongoose from 'mongoose';
 import wrap from 'co-express';
+import * as codes from '../constants/code';
 import { readJson } from '../util';
 
 const objectId = mongoose.Types.ObjectId;
@@ -9,7 +10,7 @@ const Deposit = mongoose.model('Deposit');
 const load = wrap(function* (req, res, next, id) {
     const deposit = yield Deposit.load({ conditions: { depositId: Number(id) } });
     req.deposit = deposit;
-    if (!req.deposit) next({ code: 1, msg: 'Deposit not found' });
+    if (!req.deposit) next({ code: codes.NOT_FOUND, msg: 'Deposit not found' });
     else next();
 });
 
@@ -17,12 +18,12 @@ const depositList = wrap(function* (req, res) {
     // return res.json(readJson('deposit/list.json'));
     const count = yield Deposit.countDocuments();
     const data = yield Deposit.list({ page: req.query.page, size: req.query.size });
-    res.json({ code: 0, data: { count: count, data } });
+    res.json({ code: codes.SUCCESS, data: { count, data } });
 });
 
 export function depositInfo (req, res, next) {
     // return res.json(readJson('deposit/info.json'));
-    return res.json({ code: 0, data: req.deposit });
+    return res.json({ code: codes.SUCCESS, data: req.deposit });
 }
 
 const depositAdd = wrap(function* (req, res) {
@@ -37,9 +38,9 @@ const depositAdd = wrap(function* (req, res) {
     });
     try {
         ins = yield ins.save();
-        return res.json({ code: 0, data: ins });
+        return res.json({ code: codes.SUCCESS, data: ins });
     } catch (e) {
-        return res.json({ code: 1, msg: e.message });
+        return res.json({ code: codes.PARAM_ERROR, msg: e.message });
     }
 });
 
