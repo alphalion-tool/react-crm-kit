@@ -9,6 +9,7 @@
     
     git clone https://github.com/alphalion-tool/react-crm-kit.git
     cd react-crm-kit && yarn install
+    npm run server // 打开本地的server
     npm run dev
 
     在浏览器中打开：http://localhost:8082
@@ -18,6 +19,7 @@
 
 
 ### 2，依赖包
+#### 2.1 front
 - react v16
 - react-router v4.2
 - redux v3.6
@@ -27,6 +29,11 @@
 - bizcharts v3.2.2
 
 
+#### 2.2 server
+- mongoose v5.x
+- express v4.x
+
+
 ### 3，package.json 中的 scripts
 
     A，开发、部署、测试相关：
@@ -34,13 +41,13 @@
         `npm run dev`    
             // 开发模式，开启webpack，此时页面中使用静态文件是从`src`中实时产生的
 
-        `npm run prod`    
-            // 线上模式，此时页面用到的静态文件是从`build`中获取的。可作为部署(仅当所有的server代码存在于当前的项目中)
+        `npm run server`    
+            // 开启server，此时页面用到的静态文件是从`build`中获取的。可作为部署(仅当所有的server代码存在于当前的项目中)
 
         `npm run build`     
             编译成最终静态文件，放在`build`目录中，连同前后端约定的模板。    
             `build/static`为所有的静态文件目录    
-            `build/template`是前后端的页面模板，多数情况下只需要一个首页模板即可
+            `build/templates`是前后端的页面模板，多数情况下只需要一个首页模板即可
 
         `npm run test`    
             // 运行测试用例，最终结果在`_reports/test/html/JSDOM-test-report.html`    
@@ -98,7 +105,7 @@
         
 #### 5.2，开发过程
 - `npm run server`  开启本地server，配置可在server/config/prod.config.json中修改
-- `npm run dev`  开启webpack dev server，配置可在server/config/dev.config.json中修改
+- `npm run dev`  开启webpack dev server，配置可在webpack-dev-server/config.json中修改
 
 #### 5.3，代码校验
 ##### js方面

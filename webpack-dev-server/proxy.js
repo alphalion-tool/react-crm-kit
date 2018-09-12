@@ -3,26 +3,23 @@
 import express from 'express';
 import path from 'path';
 import lodash from 'lodash';
-import readConfig from 'read-config';
 import Url from 'url';
 import httpProxyMiddle from 'http-proxy-middleware';
 import proxy from 'express-http-proxy';
-import axios from 'axios';
 import cookieParser from 'cookie-parser';
-import { getConfig } from './config';
 
 const appPath = path.join(__dirname, '');
 const templatePath = path.join(appPath, './templates');
 
 // API proxy
-function proxyAPI(isHttps, proxyServer, proxyPath) {
-    return proxy(proxyServer, {
+function proxyAPI({ isHttps, domain, pathname }) {
+    return proxy(domain, {
         https: isHttps,
         secure: false,
         proxyReqPathResolver: function (req) {
             const curPath = Url.parse(req.url).path;
-            if (!proxyPath) return curPath;
-            return path.join(proxyPath, curPath);
+            if (!pathname) return curPath;
+            return path.join(pathname, curPath);
         },
         filter: function (req, res) {
             const tmpPath = req.path || req.originalUrl,
@@ -43,8 +40,8 @@ function proxyAPI(isHttps, proxyServer, proxyPath) {
 
 // index请求特殊处理
 // 在mock的时候，请求"/"， 会转换为POST请求发送
-function proxyIndex(isHttps, proxyServer, proxyPath) {
-    return proxy(proxyServer, {
+function proxyIndex({ isHttps, domain, pathname }) {
+    return proxy(domain, {
         https: isHttps,
         secure: false,
         proxyReqOptDecorator: function (proxyReq, originalReq) {
@@ -56,8 +53,8 @@ function proxyIndex(isHttps, proxyServer, proxyPath) {
         },
         proxyReqPathResolver: function (req) {
             const curPath = Url.parse(req.url).path;
-            if (!proxyPath) return curPath;
-            return path.join(proxyPath, curPath);
+            if (!pathname) return curPath;
+            return path.join(pathname, curPath);
         },
         userResDecorator: function (rsp, data, req, res) {
             return new Promise((resolve) => {
@@ -114,9 +111,10 @@ function log(req, res, next) {
 }
 
 // get websocket proxy instance
-function wsProxyInstance (isHttps, proxyServer, wsPath = '/ws') {
-    return httpProxyMiddle(wsPath, {
-        target: isHttps ? `https://${proxyServer}` : `http://${proxyServer}`,
+function wsProxyInstance ({ isHttps, domain, pathname, wsPathname }) {
+    console.log(isHttps, domain);
+    return httpProxyMiddle(wsPathname, {
+        target: isHttps ? `https://${domain}` : `http://${domain}`,
         changeOrigin: true,
         ws: true,
         logLevel: 'error',
@@ -126,59 +124,18 @@ function wsProxyInstance (isHttps, proxyServer, wsPath = '/ws') {
         },
         onOpen: function (proxySocket) {
             proxySocket.on('data', (chunk) => {
-                console.log('WS', '\t', wsPath.green, '\t', '[proxy]'.yellow);
+                console.log('WS', '\t', wsPathname.green, '\t', '[proxy]'.yellow);
             })
         }
     });
 }
 
-// mock-helper, please use please use https://github.com/alphalion-tool/mock-helper plugins
-function mockHelperPlugin (req, res, next) {
-    if (req.headers['__mock__datafrom__']) {
-        if (req.headers['__mock__datafrom__'] === 'filesystem') {
-            // from filesystem
-    
-            const tmpFilePath = path.join(req.headers['__mock__fileroot__'], req.headers['__mock__filename__']);
-            console.log(req.method, '\t', req.originalUrl.green, '\t', '[file]'.yellow, tmpFilePath);
-            try {
-                const json = readConfig(tmpFilePath);
-                res.json(json);
-            } catch (e) {
-                console.log(e);
-                res.json({ code: 4, data: `${tmpFilePath} NOT EXIST!!!!!` });
-            }
-            
-        } else {
-            // from mock server
-            const url = path.join(req.headers['__mock__server__'], req.originalUrl);
-            console.log(req.method, '\t', req.originalUrl.green, '\t', '[proxy]'.yellow, url);
-            axios.request({
-                baseURL: req.headers['__mock__server__'],
-                url: req.originalUrl, // url,
-                method: req.method,
-            }).then((response) => {
-                res.json(response.data);
-            }).catch( (e) => {
-                console.log(e);
-            })
-        }
-    } else {
-        next();
-    }
-}
+// config = { port: 123, proxyServer: { ... } }
+export function proxyMiddleware(app, appConfig) {
 
-// env = 'production' | 'development'
-export function proxyMiddleware(app, env) {
+    const staticPath = path.join(appPath, '../dist/static'); // env === 'production' ? path.join(appPath, '../build/static/') : path.join(appPath, '../dist/static/');
 
-    const staticPath = env === 'production' ? path.join(appPath, '../build/static/') : path.join(appPath, '../dist/static/');
-
-    const appConfig = getConfig(env);
-    const useProxy = appConfig.useProxy;  // proxy flag
     const proxyServerConfig = appConfig.proxyServer;
-    const isHttps = appConfig.isHttps;
-
-    const proxyServerDomain = `${proxyServerConfig.host}:${proxyServerConfig.port}`;
-    const proxyServerPath = proxyServerConfig.path || '';
 
     app.set('views', templatePath);
     app.set('view engine', 'pug');
@@ -189,20 +146,13 @@ export function proxyMiddleware(app, env) {
     app.use('/static', express.static(staticPath));
 
     // support websocket proxy
-    if (useProxy) app.use(wsProxyInstance(isHttps, proxyServerDomain, '/ws'));
+    app.use(wsProxyInstance(proxyServerConfig));
 
     // 首页的特殊处理
-    if (useProxy) app.get('/', proxyIndex(isHttps, proxyServerDomain, proxyServerPath));
-
-    // mock-helper, please use please use https://github.com/alphalion-tool/mock-helper plugins
-    app.use('/', mockHelperPlugin);
+    app.get('/', proxyIndex(proxyServerConfig));
 
     // for other route
-    if (useProxy) app.use('/', proxyAPI(isHttps, proxyServerDomain, proxyServerPath));
-    else {
-        const controllerHub = require('./controller/').controllerHub;
-        controllerHub(app);
-    }
+    app.use('/', proxyAPI(proxyServerConfig));
 
     app.use((err, req, res, next) => {
         if (err) {
