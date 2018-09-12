@@ -72,39 +72,26 @@ export default class NetworkError extends Error {
                 resData = data.data,
                 msg = data.msg;
             switch (code) {
-                case 5:
+                case 200000:
                     name = 'Param Error';
                     message = `${msg} in ${errorMsgWithData(resData)}`;
                     break;
-                case 4:
+                case 300000:
                     name = 'System Error';
                     message = `System Error: ${errorMsgWithData(resData)}`;
                     break;
-                case 3:
-                    name = 'Param Error';
-                    message = `Param Error: ${errorMsgWithData(resData)}`;
-                    // message = `Param Error in ${resData.join(', ')}`;
-                    break;
-                case 2:
+                case 100002:
                     name = 'Forbidden';
                     message = `Forbidden when ${method} ${url}`;
                     break;
-                case 1:
+                case 100001:
                     name = 'Not Login';
                     message = 'Login status has expired';
                     // message = `You need Login, when ${method} ${url}`;
                     break;
-                case -3:
+                case 100000:
                     name = 'Login Error';
                     message = 'Name or Password error';
-                    break;
-                case -4:
-                    name = 'Login Error';
-                    message = 'Auth Code error';
-                    break;
-                case -5:
-                    name = 'Login Error';
-                    message = 'Password error';
                     break;
                 default:
                     name = 'Unknown Error';

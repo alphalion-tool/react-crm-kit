@@ -110,6 +110,7 @@ module.exports = {
 
         // warning
         
+        "prefer-arrow-callback": [1],
         "no-useless-constructor": 1,
         "react/no-string-refs": [2],
         "react/sort-comp": [2, { 

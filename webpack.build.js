@@ -6,8 +6,8 @@ var WebpackShellPlugin = require('webpack-shell-plugin');
 var fs = require('fs');
 var staticRoot = path.join(__dirname, 'build/static/');
 var config = require('./webpack.common.js')(staticRoot, true);
-var templatePath = path.join(__dirname, 'server/templates/');
-var buildTemplatePath = path.join(__dirname, 'build/template/');
+var templatePath = path.join(__dirname, 'webpack-dev-server/templates/');
+var buildTemplatePath = path.join(__dirname, 'build/templates/');
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 var WebpackClearConsole = require("webpack-clear-console").WebpackClearConsole;
 var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
@@ -54,7 +54,7 @@ config.plugins = [
             }
             // 替换掉index.jade中的__v__值
             var htmlPath = path.join(templatePath, 'index.pug');
-            var newHtmlPath = path.join(buildTemplatePath, 'index.jade');
+            var newHtmlPath = path.join(buildTemplatePath, 'index.pug');
             var template = fs.readFileSync(htmlPath, 'utf8');
             var html = template.replace(/__v__/g, `v=${stats.hash}`).replace(/BUILD_TIME_TAG/, `${new Date()}`);
             fs.writeFile(newHtmlPath, html);

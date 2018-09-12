@@ -2,20 +2,6 @@
     "code": 0,
     "msg": "Success",
     "data": {
-        "permission": {
-            "company": {
-                "add": true,
-                "view": true,
-                "edit": true,
-                "query": true
-            },
-            "user": {
-                "add": true,
-                "view": true,
-                "edit": true,
-                "query": true
-            }
-        },
         "isLoggedIn": true,
         "user": {
             "userName": "admin",

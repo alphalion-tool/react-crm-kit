@@ -26,10 +26,16 @@ const routes = [
     ...orderControls
 ];
 
-export function controllerHub (app) {
+export function hubController (app) {
     routes.forEach((route) => {
         const method = route.method || 'get';
-        app[method.toLowerCase()](route.path, route.fn);
+        const type = route.type || 'interface'; // for param or interface
+        // is param
+        if (type === 'param') {
+            app.param(route.name, route.fn);
+            return;
+        }
+        app[method](route.path, route.fn);
     });
     return app;
 }

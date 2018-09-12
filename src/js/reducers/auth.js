@@ -9,41 +9,36 @@ import { createReducers } from 'jscom/store/redux-tool';
 import { actionIds } from '../actions/auth';
 
 export const initialState = {
-    authName: localStorage.getItem('authName') || '',
+    userName: localStorage.getItem('userName') || '',
     authToken: null,
     isLoggedIn: false,
-    authMsg: null,
     status: null,
 };
 
 export default createReducers(initialState, {
 
-    [`${actionIds.switchAuth}`]: (state, { isLoggedIn, authName, user }) => ({
+    [`${actionIds.switchAuth}`]: (state, { isLoggedIn, userName, user }) => ({
         ...state,
         isLoggedIn,
-        authName
+        userName
     }),
 
     [`${actionIds.login}`]: (state, { name, token }) => ({
         ...state,
-        authName: name,
+        userName: name,
         authToken: token,
         isLoggedIn: false,
-        authMsg: null,
         status: 'loading',
     }),
 
     [`${actionIds.login}-success`]: (state, { body, name }) => {
-        const res = body;
-
-        const userName = res.user && res.user.userName;
-
-        localStorage.setItem('authName', userName);
+        const user = body.data;
+        const userName = user.userName;
+        localStorage.setItem('userName', userName);
         return {
             ...state,
             isLoggedIn: true,
-            authName: userName,
-            authMsg: null,
+            userName,
             status: 'done'
         };
     },
@@ -58,7 +53,7 @@ export default createReducers(initialState, {
 
     [`${actionIds.logout}-success`]: (state) => ({
         ...state,
-        authName: '',
+        userName: '',
         authToken: null,
         isLoggedIn: false,
         status: null,

@@ -1,22 +1,14 @@
 
 import lodash from 'lodash';
+import * as codes from '../constants/code';
 import { readJson } from '../util';
 
 export function index (req, res) {
-    const body = readJson('.json').data;
     const dataObject = lodash.merge({}, {
-        permission: JSON.stringify(body.permission),
-        login: body.isLoggedIn,
-        debug: false,
-        dev: true,
+        login: req.isAuthenticated(),
         title: 'Bitbal',
-        name: body.name,
-        user: JSON.stringify(body.user),
-        constants: JSON.stringify(body.constants),
+        user: JSON.stringify(req.authUser || {})
     });
-    if (!req.cookies.token) {
-        dataObject.login = false;
-    }
 
     res.set('Content-Type', 'text/html');
     res.render('index.pug', dataObject, (err, html) => {
@@ -29,11 +21,18 @@ export function index (req, res) {
 }
 
 export function indexPost (req, res) {
-    const json = readJson('.json');
-    if (!req.cookies.token) {
-        json.data.isLoggedIn = false;
-    }
-    return res.json(json);
+    return res.json({
+        code: codes.SUCCESS,
+        data: {
+            isLoggedIn: req.isAuthenticated(),
+            user: req.authUser || {}
+        }
+    })
+    // const json = readJson('.json');
+    // if (!req.cookies.token) {
+    //     json.data.isLoggedIn = false;
+    // }
+    // return res.json(json);
 }
 
 export function preload (req, res) {
