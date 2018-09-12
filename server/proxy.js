@@ -9,7 +9,6 @@ import httpProxyMiddle from 'http-proxy-middleware';
 import proxy from 'express-http-proxy';
 import axios from 'axios';
 import cookieParser from 'cookie-parser';
-import { controllerHub } from './controller/';
 import { getConfig } from './config';
 
 const appPath = path.join(__dirname, '');
@@ -200,10 +199,16 @@ export function proxyMiddleware(app, env) {
 
     // for other route
     if (useProxy) app.use('/', proxyAPI(isHttps, proxyServerDomain, proxyServerPath));
-    else controllerHub(app);
+    else {
+        const controllerHub = require('./controller/').controllerHub;
+        controllerHub(app);
+    }
 
     app.use((err, req, res, next) => {
         if (err) {
+            if (err.code && err.msg) {
+                return res.json(err);
+            }
             console.log('Error'.red, '\t', err.message.red);
             return res.end(`error: ${err.message}`);
         }

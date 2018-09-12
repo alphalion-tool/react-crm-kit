@@ -1,0 +1,1 @@
+db.accounts.save({ accountId: 1, accountName: 'jasmine', idType: 'passport', idNumber: '19820101', level: 1, email: 'jasmine@bitbal.top', firstName: 'jasmine', lastName: 'mocha', phone: '1231238', country: 'USA',  ctime: new Date(), mtime: new Date() })

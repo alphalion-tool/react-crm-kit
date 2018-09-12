@@ -10,6 +10,8 @@ import webpackConfig from '../webpack.config';
 import { stats as webpackStats } from '../webpack.common';
 import { proxyMiddleware } from './proxy';
 import { getConfig } from './config';
+import { hubDB } from './hub';
+
 
 process.on('uncaughtException', (err) => {
     console.error('Error:', err);
@@ -23,10 +25,35 @@ const appConfig = getConfig(env);
 const listenPort = appConfig.port;
 let compiler = null;
 
+
+function listen(curServer) {
+    curServer.listen(listenPort, '0.0.0.0', () => {
+
+        console.log('++++++++++++++++++++++++++++++++++++++++++++++++++');
+        if (env === 'production') {
+            console.log(`---------this is in ${env.toUpperCase()} status--------------`.red);
+        }
+        
+        console.log('DEV Server: \t\t', `http://localhost:${listenPort}`.green);
+        if (appConfig.useProxy) {
+            const serverUrl = `${appConfig.proxyServer.host}:${appConfig.proxyServer.port}`;
+            console.log('API Server: \t\t', serverUrl.green);
+        }
+        console.log('You can change config(host or port) in file: ', 'server/config/[dev|prod]config.json or server/config/local.[dev|prod].config.json'.green);
+        console.log('++++++++++++++++++++++++++++++++++++++++++++++++++');
+        if (env === 'production') {
+            console.log('You can access the web in your browser NOW!!'.green);
+        }
+    });
+}
+
 if (env === 'production') {
     // for production
     server = express();
-    proxyMiddleware(server, 'production');
+    hubDB(appConfig, () => {
+        proxyMiddleware(server, 'production');
+        listen(server);
+    });
 } else {
     // for development
     webpackConfig.entry.index.unshift('webpack/hot/only-dev-server',
@@ -35,47 +62,31 @@ if (env === 'production') {
     );
 
     compiler = webpack(webpackConfig);
-    server = new WebpackDevServer(compiler, {
+    hubDB(appConfig, () => {
+        server = new WebpackDevServer(compiler, {
 
-        contentBase: webpackConfig.output.path,
-        hot: true,
-        historyApiFallback: false,
-        // compress: true,
-        // use custom express middleware
-        before: function(app) {
-            proxyMiddleware(app, 'development');
-        },
+            contentBase: webpackConfig.output.path,
+            hot: true,
+            historyApiFallback: false,
+            // compress: true,
+            // use custom express middleware
+            before: function(app) {
+                proxyMiddleware(app, 'development');
+            },
 
-        clientLogLevel: 'warning', // error, warning, none
-        quiet: false,
-        // noInfo: true,
-        lazy: false,
-        filename: webpackConfig.output.filename,
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: 1000
-        },
-        publicPath: webpackConfig.output.publicPath,
-        stats: webpackStats
+            clientLogLevel: 'warning', // error, warning, none
+            quiet: false,
+            // noInfo: true,
+            lazy: false,
+            filename: webpackConfig.output.filename,
+            watchOptions: {
+                aggregateTimeout: 300,
+                poll: 1000
+            },
+            publicPath: webpackConfig.output.publicPath,
+            stats: webpackStats
+        });
+        listen(server);
     });
-
 }
 
-server.listen(listenPort, '0.0.0.0', () => {
-
-    console.log('++++++++++++++++++++++++++++++++++++++++++++++++++');
-    if (env === 'production') {
-        console.log(`---------this is in ${env.toUpperCase()} status--------------`.red);
-    }
-    
-    console.log('DEV Server: \t\t', `http://localhost:${listenPort}`.green);
-    if (appConfig.useProxy) {
-        const serverUrl = `${appConfig.proxyServer.host}:${appConfig.proxyServer.port}`;
-        console.log('API Server: \t\t', serverUrl.green);
-    }
-    console.log('You can change config(host or port) in file: ', 'server/config/[dev|prod]config.json or server/config/local.[dev|prod].config.json'.green);
-    console.log('++++++++++++++++++++++++++++++++++++++++++++++++++');
-    if (env === 'production') {
-        console.log('You can access the web in your browser NOW!!'.green);
-    }
-});

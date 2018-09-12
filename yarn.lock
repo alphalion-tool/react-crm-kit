@@ -689,7 +689,7 @@ async@1.x, async@^1.4.0, async@^1.5.0, async@^1.5.2, async@~1.5.2:
   version "1.5.2"
   resolved "http://registry.npm.taobao.org/async/download/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
-async@^2.6.0:
+async@2.6.1, async@^2.6.0:
   version "2.6.1"
   resolved "http://registry.npm.taobao.org/async/download/async-2.6.1.tgz#b245a23ca71930044ec53fa46aa00a3e87c6a610"
   dependencies:
@@ -1725,13 +1725,13 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
+bluebird@3.5.1, bluebird@^3.5.1:
+  version "3.5.1"
+  resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
+
 bluebird@^2.9.24:
   version "2.11.0"
   resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
-
-bluebird@^3.5.1:
-  version "3.5.1"
-  resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
 bluebird@~3.4.6:
   version "3.4.7"
@@ -1898,6 +1898,14 @@ browserslist@^2.1.2:
   dependencies:
     caniuse-lite "^1.0.30000792"
     electron-to-chromium "^1.3.30"
+
+bson@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/bson/download/bson-1.1.0.tgz#bee57d1fb6a87713471af4e32bcae36de814b5b0"
+
+bson@~1.0.5:
+  version "1.0.9"
+  resolved "http://registry.npm.taobao.org/bson/download/bson-1.0.9.tgz#12319f8323b1254739b7c6bef8d3e89ae05a2f57"
 
 buffer-alloc-unsafe@^0.1.0:
   version "0.1.1"
@@ -2388,6 +2396,12 @@ cloneable-readable@^1.0.0:
     inherits "^2.0.1"
     process-nextick-args "^2.0.0"
     readable-stream "^2.3.5"
+
+co-express@2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/co-express/download/co-express-2.0.0.tgz#cf4e0ffa8ae0f5ec7c92025c62dd1ab4a7987154"
+  optionalDependencies:
+    co "^4.6.0"
 
 co@3.1.0:
   version "3.1.0"
@@ -3255,7 +3269,7 @@ debug@2.6.9, debug@^2.1.1, debug@^2.1.2, debug@^2.1.3, debug@^2.2.0, debug@^2.3.
   dependencies:
     ms "2.0.0"
 
-debug@^3.0.1, debug@^3.1.0:
+debug@3.1.0, debug@^3.0.1, debug@^3.1.0:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/debug/download/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
@@ -6986,6 +7000,10 @@ jsx-ast-utils@^2.0.0:
   dependencies:
     array-includes "^3.0.3"
 
+kareem@2.2.1:
+  version "2.2.1"
+  resolved "http://registry.npm.taobao.org/kareem/download/kareem-2.2.1.tgz#9950809415aa3cde62ab43b4f7b919d99816e015"
+
 keyv@3.0.0:
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/keyv/download/keyv-3.0.0.tgz#44923ba39e68b12a7cec7df6c3268c031f2ef373"
@@ -7367,6 +7385,10 @@ lodash.foreach@^4.5.0:
 lodash.frompairs@^4.0.1:
   version "4.0.1"
   resolved "http://registry.npm.taobao.org/lodash.frompairs/download/lodash.frompairs-4.0.1.tgz#bc4e5207fa2757c136e573614e9664506b2b1bd2"
+
+lodash.get@4.4.2:
+  version "4.4.2"
+  resolved "http://registry.npm.taobao.org/lodash.get/download/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
 
 lodash.get@^3.7.0:
   version "3.7.0"
@@ -7894,17 +7916,62 @@ module-alias@2.0.3:
   version "2.0.3"
   resolved "http://registry.npm.taobao.org/module-alias/download/module-alias-2.0.3.tgz#d1aa64b594588f8e76203cd2782045438cad3ef5"
 
+moment-timezone@0.5.21:
+  version "0.5.21"
+  resolved "http://registry.npm.taobao.org/moment-timezone/download/moment-timezone-0.5.21.tgz#3cba247d84492174dbf71de2a9848fa13207b845"
+  dependencies:
+    moment ">= 2.9.0"
+
 moment@2.19.3:
   version "2.19.3"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.19.3.tgz#bdb99d270d6d7fda78cc0fbace855e27fe7da69f"
 
-moment@2.x, moment@^2.19.3:
+moment@2.x, "moment@>= 2.9.0", moment@^2.19.3:
   version "2.22.2"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
 moment@^2.19.1:
   version "2.22.1"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.22.1.tgz#529a2e9bf973f259c9643d237fda84de3a26e8ad"
+
+mongodb-core@3.1.3:
+  version "3.1.3"
+  resolved "http://registry.npm.taobao.org/mongodb-core/download/mongodb-core-3.1.3.tgz#b036bce5290b383fe507238965bef748dd8adb75"
+  dependencies:
+    bson "^1.1.0"
+    require_optional "^1.0.1"
+    safe-buffer "^5.1.2"
+  optionalDependencies:
+    saslprep "^1.0.0"
+
+mongodb@3.1.4:
+  version "3.1.4"
+  resolved "http://registry.npm.taobao.org/mongodb/download/mongodb-3.1.4.tgz#0ff07a7409a4edf05e71f9ff8df3633bd278ed53"
+  dependencies:
+    mongodb-core "3.1.3"
+    safe-buffer "^5.1.2"
+
+mongoose-legacy-pluralize@1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/mongoose-legacy-pluralize/download/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
+
+mongoose@5.2.14:
+  version "5.2.14"
+  resolved "http://registry.npm.taobao.org/mongoose/download/mongoose-5.2.14.tgz#ce149749a17fffb324a9ff3bd2fa50701e75743a"
+  dependencies:
+    async "2.6.1"
+    bson "~1.0.5"
+    kareem "2.2.1"
+    lodash.get "4.4.2"
+    mongodb "3.1.4"
+    mongodb-core "3.1.3"
+    mongoose-legacy-pluralize "1.0.2"
+    mpath "0.5.1"
+    mquery "3.2.0"
+    ms "2.0.0"
+    regexp-clone "0.0.1"
+    safe-buffer "5.1.2"
+    sliced "1.0.1"
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -7924,6 +7991,20 @@ mozjpeg@^5.0.0:
     bin-build "^2.2.0"
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
+
+mpath@0.5.1:
+  version "0.5.1"
+  resolved "http://registry.npm.taobao.org/mpath/download/mpath-0.5.1.tgz#17131501f1ff9e6e4fbc8ffa875aa7065b5775ab"
+
+mquery@3.2.0:
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/mquery/download/mquery-3.2.0.tgz#e276472abd5109686a15eb2a8e0761db813c81cc"
+  dependencies:
+    bluebird "3.5.1"
+    debug "3.1.0"
+    regexp-clone "0.0.1"
+    safe-buffer "5.1.2"
+    sliced "1.0.1"
 
 ms@0.7.1:
   version "0.7.1"
@@ -10505,6 +10586,10 @@ regex-parser@^2.2.9:
   version "2.2.9"
   resolved "http://registry.npm.taobao.org/regex-parser/download/regex-parser-2.2.9.tgz#a372f45a248b62976a568037c1b6e60a60599192"
 
+regexp-clone@0.0.1:
+  version "0.0.1"
+  resolved "http://registry.npm.taobao.org/regexp-clone/download/regexp-clone-0.0.1.tgz#a7c2e09891fdbf38fbb10d376fb73003e68ac589"
+
 regexpu-core@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/regexpu-core/download/regexpu-core-1.0.0.tgz#86a763f58ee4d7c2f6b102e4764050de7ed90c6b"
@@ -10660,6 +10745,13 @@ require-uncached@^1.0.2:
   dependencies:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
+
+require_optional@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/require_optional/download/require_optional-1.0.1.tgz#4cf35a4247f64ca3df8c2ef208cc494b1ca8fc2e"
+  dependencies:
+    resolve-from "^2.0.0"
+    semver "^5.1.0"
 
 requires-port@1.x.x, requires-port@^1.0.0:
   version "1.0.0"
@@ -10861,7 +10953,7 @@ safe-buffer@5.1.1:
   version "5.1.1"
   resolved "http://registry.npm.taobao.org/safe-buffer/download/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
 
-safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
+safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "http://registry.npm.taobao.org/safe-buffer/download/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
 
@@ -10878,6 +10970,10 @@ safe-regex@^1.1.0:
 "safer-buffer@>= 2.1.2 < 3":
   version "2.1.2"
   resolved "http://registry.npm.taobao.org/safer-buffer/download/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
+
+saslprep@^1.0.0:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/saslprep/download/saslprep-1.0.1.tgz#b644e0ba25b156b652f3cb90df7542f896049ba6"
 
 sass-graph@^2.2.4:
   version "2.2.4"
@@ -11199,6 +11295,10 @@ slice-ansi@1.0.0:
   resolved "http://registry.npm.taobao.org/slice-ansi/download/slice-ansi-1.0.0.tgz#044f1a49d8842ff307aad6b505ed178bd950134d"
   dependencies:
     is-fullwidth-code-point "^2.0.0"
+
+sliced@1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/sliced/download/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
 
 slide@^1.1.5:
   version "1.1.6"

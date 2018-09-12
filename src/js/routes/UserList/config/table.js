@@ -7,8 +7,7 @@ const columns = [
         key: 'userId',
         dataIndex: 'userId',
         width: WIDTHS.CELL_WIDTH,
-        fixed: true,
-        cellClassName: 'cell--link',
+        // fixed: true,
         sort: {
             type: 'number'
         },
@@ -21,14 +20,7 @@ const columns = [
         key: 'userName',
         dataIndex: 'userName',
         width: WIDTHS.CELL_WIDTH,
-        fixed: true,
-        cellClassName: 'cell--link',
-        sort: {
-            type: 'alphabet',
-        },
-        filter: {
-            type: 'string'
-        }
+        // fixed: true,
     },
     {
         title: 'Email',
@@ -82,10 +74,6 @@ const columns = [
     }
 ];
 
-const tableTools = [
-    { name: 'add' }, { name: 'export' }, { name: 'filter' }, { name: 'setting' }
-];
-
 export function processTabelItem (item) {
     return {
         ...item,
@@ -95,19 +83,6 @@ export function processTabelItem (item) {
 
 export function processTableData (arr = []) {
     return arr.map(item => processTabelItem(item));
-}
-
-export function getTableToolConfig (props) {
-    let tools = [];
-    if (props.checkPermission('user', 'add')) {
-        tools.push(tableTools[0]);
-    }
-    // if (props.checkPermission('user', 'query')) {
-    //     tools.push(tableTools[1]);
-    // }
-    tools.push(tableTools[2]);
-    tools.push(tableTools[3]);
-    return tools;
 }
 
 export {

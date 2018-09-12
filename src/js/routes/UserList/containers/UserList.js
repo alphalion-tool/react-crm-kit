@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 import { bind } from 'decko';
 import Container from 'jscom/components/app/Container';
 import { containerInject, connectPermission } from 'jscom/utils/decorators';
-import { Table, Message } from 'antd';
+import { Table } from 'antd';
 import * as windows from 'jscom/utils/window';
-import { getComponentSize } from 'jscom/utils/dom';
 import UserListQuery from '../components/UserListQuery';
-import { columns as COLUMNS, getTableToolConfig } from '../config/table';
+import { columns as COLUMNS } from '../config/table';
 import Actions from '../modules/action';
 
 export function mapState2Props (store, ownProps) {
@@ -32,16 +31,9 @@ export class PureUserList extends Component {
 
     constructor(props) {
         super(props);
-        const tableTools = getTableToolConfig(props);
-        if (tableTools.find(item => item.name === 'add')) {
-            tableTools.find(item => item.name === 'add').onClick = this.handleNewClick;
-        }
         this.state = {
             status: '',
-            tableWidth: 400,
-            tableHeight: 300,
             hasFetched: false,
-            tableTools
         };
     }
 
