@@ -22,17 +22,23 @@ describe('<Container />', () => {
 
     it('with className', () => {
         wrapper = mount(<Container className="xxxx-xxxx"><div>this is content</div></Container>);
-        expect(wrapper.html()).toEqual('<div class="s-content-root xxxx-xxxx"><div class="c-spin-nested-loading"><div class="c-spin-container"><div>this is content</div></div></div></div>');
+        expect(wrapper.html()).toEqual(
+            '<div class="s-content-root xxxx-xxxx"><div class="ant-spin-nested-loading"><div class="ant-spin-container"><div>this is content</div></div></div></div>'
+        );
     });
 
     it('with spinning=true/false', () => {
         jasmine.clock().install();
         wrapper = mount(<Container spinning={true}><div>this is content</div></Container>);
-        expect(wrapper.html()).toEqual('<div class="s-content-root"><div class="c-spin-nested-loading"><div><div class="c-spin c-spin-spinning"><span class="c-spin-dot"><i></i><i></i><i></i><i></i></span></div></div><div class="c-spin-container c-spin-blur"><div>this is content</div></div></div></div>');
+        expect(wrapper.html()).toEqual(
+            '<div class="s-content-root"><div class="ant-spin-nested-loading"><div><div class="ant-spin ant-spin-spinning"><span class="ant-spin-dot ant-spin-dot-spin"><i></i><i></i><i></i><i></i></span></div></div><div class="ant-spin-container ant-spin-blur"><div>this is content</div></div></div></div>'
+            );
         wrapper.setProps({ spinning: false });
         wrapper.update();
         jasmine.clock().tick(400);
-        expect(wrapper.html()).toEqual('<div class="s-content-root"><div class="c-spin-nested-loading"><div class="c-spin-container"><div>this is content</div></div></div></div>');
+        expect(wrapper.html()).toEqual(
+            '<div class="s-content-root"><div class="ant-spin-nested-loading"><div class="ant-spin-container"><div>this is content</div></div></div></div>'
+        );
     });
 
     it('with innerRef', () => {

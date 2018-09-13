@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { mountEnv } from 'jstest/helpers/enzyme';
-import UserListQuery from '../UserListQuery';
+import AccountListQuery from '../AccountListQuery';
 import mockStore from 'jstest/helpers/store';
 
-describe('UserList/components/UserListQuery', () => {
+describe('AccountList/components/AccountListQuery', () => {
 
     let wrapper,
         store,
@@ -15,7 +15,7 @@ describe('UserList/components/UserListQuery', () => {
         props = {
             onSearch: jasmine.createSpy('onSearch() spy'),
         };
-        wrapper = mountEnv(<UserListQuery {...props} />, store);
+        wrapper = mountEnv(<AccountListQuery {...props} />, store);
     });
 
     it('render success', () => {
@@ -25,9 +25,9 @@ describe('UserList/components/UserListQuery', () => {
     it('user name input', () => {
         const inputNode = wrapper.find('QueryItem').first().find('input');
         inputNode.simulate('focus');
-        inputNode.simulate('change', { target: { value: '1' } });
+        inputNode.simulate('input', { target: { value: 'a', id: 'accountName' } });
         wrapper.update();
-        expect(wrapper.state('querys').toJS()).toEqual({ name: '1' });
+        expect(wrapper.state('querys').toJS()).toEqual({ accountName: 'a' });
     });
 
     it('click search', () => {
@@ -38,14 +38,14 @@ describe('UserList/components/UserListQuery', () => {
     it('name input & click search', () => {
         const inputNode = wrapper.find('QueryItem').first().find('input');
         inputNode.simulate('focus');
-        inputNode.simulate('change', { target: { value: '1' } });
+        inputNode.simulate('input', { target: { value: '1', id: 'accountName' } });
         wrapper.update();
 
-        expect(wrapper.state('querys').toJS()).toEqual({ name: '1' });
+        expect(wrapper.state('querys').toJS()).toEqual({ accountName: '1' });
 
         wrapper.find('button').first().simulate('click');
         expect(props.onSearch).toHaveBeenCalledWith(jasmine.objectContaining({
-            name: '1'
+            accountName: '1'
         }));
     });
 
@@ -53,7 +53,7 @@ describe('UserList/components/UserListQuery', () => {
     it('input & clear', () => {
         const inputNode = wrapper.find('QueryItem').first().find('input');
         inputNode.simulate('focus');
-        inputNode.simulate('change', { target: { value: '1' } });
+        inputNode.simulate('input', { target: { value: '1', id: 'accountName' } });
         wrapper.update();
 
         wrapper.find('button').last().simulate('click');

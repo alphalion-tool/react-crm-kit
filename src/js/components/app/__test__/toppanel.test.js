@@ -14,8 +14,7 @@ describe('<TopPanel />', () => {
             isLogin: true,
             onLogout: jasmine.createSpy('onLogout'),
             onRemind: jasmine.createSpy('onRemind'),
-            name: 'admin',
-            businessDate: '11/02/2017'
+            userName: 'admin',
         };
         wrapper = mount(
             <TopPanel {...props} />
@@ -28,7 +27,7 @@ describe('<TopPanel />', () => {
 
     it('render success', () => {
         expect(wrapper.exists()).toEqual(true);
-        expect(wrapper.text().trim()).toEqual('11/02/2017admin');
+        expect(wrapper.text().trim()).toMatch(/\d{2}\/\d{2}\/\d{4}admin/);
     });
 
     it('menu open', () => {
@@ -43,7 +42,7 @@ describe('<TopPanel />', () => {
 
     it('click setting', () => {
         jasmine.clock().install();
-        const openPwdSpy = spyOn(windows, 'openResetPasswordPage');
+        const openPwdSpy = spyOn(windows, 'openSettingSecurityPage');
         wrapper.find('TopPannel').find('p').simulate('mouseenter');
         jasmine.clock().tick(400);
         wrapper.update();

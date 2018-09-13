@@ -11,6 +11,13 @@
             "firstName": "admin",
             "lastName": "",
             "description": null,
+            "permission": {
+                "user": {
+                    "query": true,
+                    "view": true,
+                    "edit": true
+                }
+            }
         }
     }
 }

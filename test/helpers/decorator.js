@@ -2,7 +2,7 @@
 
 import { intlMethodInject } from './intl';
 
-import { immutableInject, intlInject, loggerInject, resizeInject, routerHandleInject, sliderInject } from 'jscom/utils/decorators/index';
+import { immutableInject, intlInject, loggerInject, resizeInject } from 'jscom/utils/decorators/index';
 
 
 export function containerMethodInject (target) {

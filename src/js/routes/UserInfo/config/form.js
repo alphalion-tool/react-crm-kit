@@ -72,9 +72,9 @@ function mapData2Fields(data, formDesc) {
     const ret = {};
     Object.keys(formDesc).forEach((key) => {
         ret[key] = {};
-        // createFormField({
-        //     value: data[key]
-        // })
+        createFormField({
+            value: data[key]
+        })
     });
     return ret;
 }

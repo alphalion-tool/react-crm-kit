@@ -19,7 +19,7 @@ import {
 } from 'jstest/helpers/utils';
 
 
-describe('UserList/containers/UserList', () => {
+xdescribe('UserList/containers/UserList', () => {
 
     let store,
         props,
@@ -110,17 +110,6 @@ describe('UserList/containers/UserList', () => {
 
         expect(openCompanySpy).toHaveBeenCalled();
         expect(openCompanySpy).toHaveBeenCalledWith(rowData.companyId);
-    });
-
-    it('resize width', () => {
-        jasmine.clock().install();
-        resetCompSize(wrapper.find('ContentBody'), 200, 300);
-        wrapper.setProps({ layoutWidth: 200, layoutHeight: 300 });
-        jasmine.clock().tick(200);
-        
-        const size = getCompSize(wrapper.find('BlueseaTable'));
-        expect(size.width).toEqual(160);
-        jasmine.clock().uninstall();
     });
 
 })

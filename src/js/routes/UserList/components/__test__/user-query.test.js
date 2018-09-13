@@ -25,9 +25,9 @@ describe('UserList/components/UserListQuery', () => {
     it('user name input', () => {
         const inputNode = wrapper.find('QueryItem').first().find('input');
         inputNode.simulate('focus');
-        inputNode.simulate('change', { target: { value: '1' } });
+        inputNode.simulate('input', { target: { value: 'a', id: 'name' } });
         wrapper.update();
-        expect(wrapper.state('querys').toJS()).toEqual({ name: '1' });
+        expect(wrapper.state('querys').toJS()).toEqual({ name: 'a' });
     });
 
     it('click search', () => {
@@ -38,14 +38,14 @@ describe('UserList/components/UserListQuery', () => {
     it('name input & click search', () => {
         const inputNode = wrapper.find('QueryItem').first().find('input');
         inputNode.simulate('focus');
-        inputNode.simulate('change', { target: { value: '1' } });
+        inputNode.simulate('input', { target: { value: 'a', id: 'name' } });
         wrapper.update();
 
-        expect(wrapper.state('querys').toJS()).toEqual({ name: '1' });
+        expect(wrapper.state('querys').toJS()).toEqual({ name: 'a' });
 
         wrapper.find('button').first().simulate('click');
         expect(props.onSearch).toHaveBeenCalledWith(jasmine.objectContaining({
-            name: '1'
+            name: 'a'
         }));
     });
 

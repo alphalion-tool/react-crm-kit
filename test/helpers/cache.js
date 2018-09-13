@@ -1,30 +1,7 @@
 import { readJson } from 'jstest/data/config';
 import { startCase } from 'jscom/utils/lodash';
 
-import CompanyModel from 'jscom/schemas/CompanySchema';
-
-const companyJson = readJson('company/query.json').data;
-const userJson = readJson('user/query.json').data;
-
-const companies = companyJson.map((item) => CompanyModel.fromAPI(item));
-
-// 获取company，同时可以按照index获取
-export function getCompanyQuery(index) {
-    if (index !== undefined) return companyJson[index];
-    return companyJson;
-}
-
-export function companyForStore(index) {
-    if (index !== undefined) {
-        return companies[index];
-    }
-    const companyOptions = companies.map((item) => CompanyModel.company2Option(item));
-    return {
-        companyStatus: 'done',
-        companies,
-        companyOptions,
-    };
-}
+const userJson = readJson('user/list.json').data;
 
 export function usersForStore() {
     if (!userJson) return false;
@@ -42,7 +19,6 @@ export function usersForStore() {
 
 const cacheStore = {
     cache: {
-        ...companyForStore(),
         ...usersForStore(),
     }
 };
