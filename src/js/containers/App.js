@@ -161,7 +161,7 @@ class App extends Component {
         })
         Modal.error({
             title: 'Your session has expired',
-            content: 'It’s been more than 60 minutes since you left the Falcon. Please log in again.',
+            content: 'It’s been more than 60 minutes since you left the System. Please log in again.',
             onOk () {
                 // console.log('ok');
                 that.setState({

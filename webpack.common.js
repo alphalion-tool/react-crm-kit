@@ -10,7 +10,7 @@ const stats = {
     timings: false,
 };
 
-module.exports = function (staticRoot, ONLINE_FLAG) {
+module.exports = function (staticRoot) {
 
     var webpack = require('webpack');
     var path = require('path');
