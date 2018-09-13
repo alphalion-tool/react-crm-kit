@@ -41,7 +41,6 @@ const store = mockStore({
         CURRENCY: [], // new IList(currency),
         COUNTRY: [], // new IList(country),
         permission: window.__DATA__.PERMISSION,
-        preloadFlag: true,
         user: { 
             userName: 'bitbaluser',
             userId: 34,
