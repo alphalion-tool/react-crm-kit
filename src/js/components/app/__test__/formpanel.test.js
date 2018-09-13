@@ -3,7 +3,7 @@ import React from 'react';
 import { mount } from 'jstest/helpers/enzyme';
 import FormPanel from '../FormPanel';
 
-describe('<FormPanel />', () => {
+xdescribe('<FormPanel />', () => {
 
     let wrapper,
         props;

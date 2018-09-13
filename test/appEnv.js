@@ -1,12 +1,6 @@
 /* eslint-disable new-cap */
 
 import AppActions from 'jscom/actions/app';
-import { currency2Options, country2Options } from 'jscom/reducers/app';
-
-import { IMap, IList } from 'jscom/utils/immutable';
-
-import { assign, omit } from 'jscom/utils/lodash';
-import { str2moment, moment2str, todayStr } from 'jscom/utils/time';
 import { processAppEnv } from 'jscom/utils/env';
 
 import { switchLocale } from 'appcom/locales/index';
@@ -23,25 +17,20 @@ global.window.localeMessages = window.localeMessages;
 window.__DATA__ = window.__DATA__ || {};
 window.__TEST__ = window.__TEST__ || {}; // 用于测试
 
-const currencyRet = readJson('const/currency.json');
-const countryRet = readJson('const/country.json');
+
 const permissionRet = readJson('.json');
 
-const currency = currencyRet.data,
-    country = countryRet.data,
-    permission = permissionRet.data.permission;
-
+const permission = permissionRet.data.user.permission;
 
 // 用于重置测试环境的全局变量
 global.window.TEST_RESET_ENV = function () {
     processAppEnv(permissionRet.data);
-    window.__DATA__.CURRENCY = currency;
-    window.__DATA__.CURRENCY_OPTIONS = currency2Options(currency);
-    window.__DATA__.COUNTRY = country;
-    window.__DATA__.COUNTRY_OPTIONS = country2Options(country);
+    window.__DATA__.CURRENCY = []; 
+    window.__DATA__.CURRENCY_OPTIONS = [];
+    window.__DATA__.COUNTRY = [];
+    window.__DATA__.COUNTRY_OPTIONS = [];
 
     window.__DATA__.PERMISSION = permission;
-    window.__DATA__.TODAY = todayStr('MM/DD/YYYY');
 }
 
 window.TEST_RESET_ENV();
@@ -49,10 +38,9 @@ window.TEST_RESET_ENV();
 const store = mockStore({
     app: {
         ...appState,
-        CURRENCY: new IList(currency),
-        COUNTRY: new IList(country),
+        CURRENCY: [], // new IList(currency),
+        COUNTRY: [], // new IList(country),
         permission: window.__DATA__.PERMISSION,
-        preloadFlag: true,
         user: { 
             userName: 'bitbaluser',
             userId: 34,
@@ -65,7 +53,7 @@ const store = mockStore({
     },
     auth: {
         ...authState,
-        authName: 'admin',
+        userName: 'admin',
         isLoggedIn: true,
     },
     ...getCacheStore(),

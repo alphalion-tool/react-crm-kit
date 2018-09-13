@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { bind } from 'decko';
 import Container from 'jscom/components/app/Container';
 import { message } from 'antd';
@@ -10,7 +10,7 @@ import UserSchema from 'jscom/schemas//UserSchema';
 import services from 'jscom/services';
 import * as windows from 'jscom/utils/window';
 
-export class PureUserNew extends PureComponent {
+export class PureUserNew extends Component {
 
     state = {
         user: new UserSchema({}),

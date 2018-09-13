@@ -40,8 +40,8 @@ describe('reducer/app', () => {
             }
         })).toEqual({
             ...initialState,
-            permission: body.permission,
-            user: body.user
+            permission: body.data.permission,
+            user: body.data
         });
     });
 

@@ -3,29 +3,30 @@
 import { actionIds } from '../action';
 import reducer from '../reducer';
 import { readJson } from 'jstest/data/config';
-import { getUserQuery } from 'jstest/helpers/store';
+import { getAccountQuery } from 'jstest/helpers/store';
+import { processTableData } from '../../config/table';
 
-describe('UserList/modules/reducer', () => {
+describe('AccountList/modules/reducer', () => {
 
     // query loading
     it('search - loading', () => {
         expect(reducer(undefined, {
             type: actionIds.search
         })).toEqual({
-            userList: [],
+            accountList: [],
             status: 'loading',
         });
     });
 
     // query success
     it('search - success', () => {
-        const body = readJson('user/query.json');
+        const body = readJson('account/list.json');
         const reducerRet = reducer(undefined, { type: `${actionIds.search}-success`, payload: { body } });
         expect(reducerRet).toEqual(jasmine.objectContaining({
             status: 'done'
         }))
-        expect(reducerRet.userList.length).toEqual(8);
-        expect(reducerRet.userList).toEqual(getUserQuery());
+        expect(reducerRet.accountList.length).toEqual(3);
+        expect(reducerRet.accountList).toEqual(processTableData(getAccountQuery()));
     });
 
     // query failed
@@ -33,7 +34,7 @@ describe('UserList/modules/reducer', () => {
         expect(reducer(undefined, {
             type: `${actionIds.search}-failure`
         })).toEqual({
-            userList: [],
+            accountList: [],
             status: 'failure'
         });
     });

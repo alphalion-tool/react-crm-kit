@@ -43,7 +43,7 @@ describe('services/NetworkError', () => {
             config: { url: '/xx', method: 'get' },
             status: 200,
             data: {
-                code: 1,
+                code: 100001,
                 msg: 'fake error',
                 data: null
             },

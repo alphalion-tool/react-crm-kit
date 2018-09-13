@@ -27,9 +27,9 @@ export default class UserListQuery extends Component {
     };
 
     @bind
-    handleInputChange (e: SyntheticInputEvent, id?: string) {
+    handleInputChange (e: SyntheticInputEvent) {
         this.setState({
-            querys: this.state.querys.set(id, e.target.value)
+            querys: this.state.querys.set(e.target.id, e.target.value)
         });
     }
 
@@ -49,7 +49,7 @@ export default class UserListQuery extends Component {
             <QueryBlock>
                 <QueryBlock.Row>
                     <QueryBlock.Item label="User Name">
-                        <Input size="small" id="name" placeholder="Type User Name" value={this.state.querys.get('name')} onChange={this.handleInputChange} />
+                        <Input size="small" id="name" placeholder="Type User Name" value={this.state.querys.get('name')} onInput={this.handleInputChange} />
                     </QueryBlock.Item>
                     <QueryBlock.Item label="">
                         <Button size="small" type="primary" onClick={this.handleSearch}>Search</Button>

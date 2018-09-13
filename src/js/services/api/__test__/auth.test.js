@@ -5,7 +5,7 @@ describe('services/auth', () => {
 
     it('api', () => {
         expect(JSON.stringify(authService)).toEqual(
-            '{"authLogin":{"url":"/auth/login","method":"post"},"authLogout":{"url":"/auth/logout","method":"get"},"authLogoutPost":{"url":"/auth/logout","method":"post"},"authPassword":{"url":"/auth/password","method":"post"}}'
+            '{"authLogin":{"url":"/api/auth/login","method":"post"},"authLogoutPost":{"url":"/api/auth/logout","method":"post"},"authPassword":{"url":"/auth/password","method":"post"}}'
         );
     })
 

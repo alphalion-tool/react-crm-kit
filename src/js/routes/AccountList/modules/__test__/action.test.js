@@ -5,7 +5,7 @@ import mockStore from 'jstest/helpers/store';
 import { readJson } from 'jstest/data/config';
 import axiosMock from 'jstest/data/axiosMock';
 
-describe('UserList/modules/action', () => {
+describe('AccountList/modules/action', () => {
 
     let store;
     beforeEach(() => {
@@ -18,7 +18,7 @@ describe('UserList/modules/action', () => {
             { type: actionIds.search, payload: {} },
             { type: `${actionIds.search}-success`, 
                 payload: {
-                    body: readJson('user/query.json'),
+                    body: readJson('account/list.json'),
                 }
             }
         ];
@@ -29,7 +29,7 @@ describe('UserList/modules/action', () => {
 
     it('search - failed', () => {
         axiosMock.reset();
-        axiosMock.onGet(services.URL.userQuery).networkError();
+        axiosMock.onGet(services.URL.accountQuery).networkError();
         axiosMock.createMock();
 
         const expectedActions = [            

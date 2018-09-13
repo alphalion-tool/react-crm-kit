@@ -1,6 +1,6 @@
 {
     "code": 0,
-    "user": {
+    "data": {
         "userName": "admin",
         "userId": 12801,
         "email": "admin@x.com",
@@ -8,21 +8,13 @@
         "firstName": "ju",
         "lastName": "ju",
         "description": null,
-    },
-    "permission": {
-       
-        "company": {
-            "add": true,
-            "view": true,
-            "edit": true,
-            "query": true
-        },
-      
-        "user": {
-            "add": true,
-            "view": true,
-            "edit": true,
-            "query": true
-        },
-    },
+        "permission": {      
+            "user": {
+                "add": true,
+                "view": true,
+                "edit": true,
+                "query": true
+            },
+        }
+    }
 }

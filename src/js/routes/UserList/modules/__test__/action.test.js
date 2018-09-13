@@ -18,7 +18,7 @@ describe('UserList/modules/action', () => {
             { type: actionIds.search, payload: {} },
             { type: `${actionIds.search}-success`, 
                 payload: {
-                    body: readJson('user/query.json'),
+                    body: readJson('user/list.json'),
                 }
             }
         ];

@@ -9,13 +9,6 @@ import services from 'jscom/services';
 
 const actions = createActions({
 
-    loadCompany: () => {
-        return {
-            promise: services.companyQuery(),
-        }
-    },
-
-
     loadUsers: (params) => {
         return {
             promise: services.queryUserInfo(params),

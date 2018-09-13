@@ -24,16 +24,14 @@ describe('Auth actions', () => {
             {
                 type: actionIds.login,
                 payload: {
-                    name: 'bitbal',
-                    token: '123456'
+                    name: 'bitbal'
                 }
             },
             {
                 type: `${actionIds.login}-success`,
                 payload: {
                     body: readJson('auth/login.json'),
-                    name: 'bitbal',
-                    token: '123456'
+                    name: 'bitbal'
                 }
             }
         ];
@@ -48,7 +46,7 @@ describe('Auth actions', () => {
         axiosMock.createMock();
 
         const expectedActions = [            
-            { type: actionIds.login, payload: { name: 'bitbal', token: '123456' } },
+            { type: actionIds.login, payload: { name: 'bitbal' } },
             {   
                 type: `${actionIds.login}-failure`, 
                 payload: {}
@@ -64,13 +62,12 @@ describe('Auth actions', () => {
 
     it('logout - success', () => {
         const expectActions = [
-            { type: actionIds.logout, payload: { name: null, token: null } },
+            { type: actionIds.logout, payload: { name: null } },
             {
                 type: `${actionIds.logout}-success`,
                 payload: {
                     body: readJson('auth/logout.json'),
-                    name: null,
-                    token: null
+                    name: null
                 }
             }
         ];
@@ -85,7 +82,7 @@ describe('Auth actions', () => {
         axiosMock.createMock();
 
         const expectedActions = [            
-            { type: actionIds.logout, payload: { name: null, token: null } },
+            { type: actionIds.logout, payload: { name: null } },
             {   
                 type: `${actionIds.logout}-failure`, 
                 payload: {}
@@ -105,7 +102,7 @@ describe('Auth actions', () => {
             type: actionIds.switchAuth,
             payload: {
                 isLoggedIn: true,
-                authName: 'bitbal',
+                userName: 'bitbal',
                 user: { userName: 'bitbal' }
             }
         };
