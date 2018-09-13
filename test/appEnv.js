@@ -1,12 +1,6 @@
 /* eslint-disable new-cap */
 
 import AppActions from 'jscom/actions/app';
-import { currency2Options, country2Options } from 'jscom/reducers/app';
-
-import { IMap, IList } from 'jscom/utils/immutable';
-
-import { assign, omit } from 'jscom/utils/lodash';
-import { str2moment, moment2str, todayStr } from 'jscom/utils/time';
 import { processAppEnv } from 'jscom/utils/env';
 
 import { switchLocale } from 'appcom/locales/index';
