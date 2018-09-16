@@ -1,5 +1,0 @@
-@mixin system_border_radius($top-left-radius: 0, $top-right-radius: 0, $bottom-right-radius: 0, $bottom-left-radius: 0) {
-    -moz-border-radius: $top-left-radius $top-right-radius $bottom-right-radius $bottom-left-radius;
-    -webkit-border-radius: $top-left-radius $top-right-radius $bottom-right-radius $bottom-left-radius;
-    border-radius: $top-left-radius $top-right-radius $bottom-right-radius $bottom-left-radius;
-}

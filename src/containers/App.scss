@@ -1,0 +1,27 @@
+
+/* 如果是openwindow打开的窗口 */
+
+.app-container {
+
+    height: 100%;
+
+    > .s-content {
+        // height: 100%;
+        top: 60px;
+        left: 220px;
+        right: 0;
+        position: fixed;
+        right: 0;
+        overflow: auto;
+        bottom: 0;
+        background: #fafafa;
+    }
+}
+
+.app-container--logout {
+    > .s-content {
+        top: 0;
+        left: 0;
+        transition: none;
+    }
+}

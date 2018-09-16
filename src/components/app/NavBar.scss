@@ -1,0 +1,95 @@
+@import "src/style/themes/default.scss";
+
+/* 输入栏高度 */
+
+$navbar-input-height: 30px;
+
+/* 输入栏的margin-top */
+
+$navbar-input-margin-top: 20px;
+
+/* 导航的margin-top */
+
+$navbar-menu-margin-top: 10px;
+
+/* navbar 的padding */
+
+$navbar-padding: 20px;
+
+/** 左侧导航栏 **/
+
+.s-navbar {
+    background-color: $navbar-theme-color; // float: left;
+    font-size: 13px;
+    top: 0; // position: absolute;
+    height: $navbar-height;
+    transition: all .3s;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    $navbar-menu-select-square: 8px;
+    /** logo部分 */
+    $navbar-logo-img-size: 30px;
+    &__logo {
+        cursor: pointer;
+        color: white;
+        font-size: 20px;
+        line-height: $navbar-height;
+        height: $navbar-height;
+        text-transform: capitalize;
+        padding-left: $navbar-padding;
+        padding-right: $navbar-padding;
+        border-bottom: 1px solid #212636;
+        text-indent: $navbar-logo-img-size;
+        width: 200px;
+        float: left;
+        &--white {
+            background-image: url(logo/bitcoin-all.png);
+        }
+        overflow: hidden;
+        span {
+            position: relative;
+            &:before {
+                position: absolute;
+                content: '';
+                width: 105px; // $navbar-logo-img-size;
+                height: 34px; // $navbar-logo-img-size;
+                top: -6px; // -2px;
+                left: -($navbar-logo-img-size);
+                background-image: url(logo/bitcoin-all.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: left;
+            }
+        }
+    }
+
+    .ant-menu {
+        background-color: #2f374c;
+        color: white;
+
+        &-horizontal {
+            line-height: 58px;
+            border-bottom: none;
+        }
+    }
+
+    .ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu {
+        color: white;
+        a {
+            color: white;
+            line-height: 58px;
+        }
+    }
+    /** 菜单部分 */
+    &__menu {
+        margin-left: 200px;
+        margin-right: 250px;
+        &>.c-menu {
+            height: 60px;
+            overflow-y: hidden;
+            overflow-x: auto;
+        }
+    }
+}

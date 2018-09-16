@@ -1,0 +1,57 @@
+.s-content__scrollmenu {
+    position: absolute;
+    z-index: 10;
+    line-height: 25px;
+
+    button {
+        background: rgba(255, 255, 255, 0);
+        display: block;
+        text-align: left;
+        width: 100%;
+    }
+
+    &__link {
+        cursor: pointer;
+        // padding-left: 1.6em;
+
+        &:hover {
+            background-color: initial;
+        }
+    }
+
+    .c-timeline-item-head {
+        background: #979797;
+        border: 2px solid #FFFFFF;
+
+    }
+
+    .c-timeline-item-content {
+        padding-bottom: 0;
+    }
+
+    &--active.c-timeline-item:first-child {
+        .c-timeline-item-tail {
+            margin-top: 3px;
+        }
+    }
+
+    .c-timeline-item-head-custom {
+        width: 15px;
+        height: 10px;
+        left: -1px;
+        margin-top: 8px;
+        background: #279AF0;
+
+        .fonticon {
+            display: none;
+            border: 1px solid #fff;
+        }
+    }
+
+    .c-timeline-item-tail {
+        border-left-color: #d8d8d8;
+    }
+
+
+
+}

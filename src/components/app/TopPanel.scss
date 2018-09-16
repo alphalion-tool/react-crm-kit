@@ -1,0 +1,55 @@
+
+@import "src/style/themes/default.scss";
+
+.s-top-panel__root {
+    height: $navbar-height - 1;
+    line-height: $navbar-height;
+    // color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+    background-color: white;
+    
+}
+
+.s-top-panel {
+
+    i {
+        font-size: 10px;
+        margin-right: 20px;
+    }
+
+    &__right {
+        
+        display: inline-block;
+        line-height: 60px;
+
+        p {
+            height: $navbar-height - 4;
+            display: inline-block;
+            font-family: Arial;
+            font-size: 16px;
+        }
+    }
+
+    &__menu {
+        .ant-dropdown-menu-item:last-child {
+            margin-top: 10px;
+        }
+        p {
+            margin: 0;
+        }
+    }
+
+    &__bisdate {
+        margin-right: 20px;
+        font-size: 12px;
+    }
+
+    &__name {
+        margin: 0 20px 0 5px;
+        cursor: pointer;
+    }
+
+}

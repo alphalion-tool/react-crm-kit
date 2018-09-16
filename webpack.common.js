@@ -26,15 +26,14 @@ module.exports = function (staticRoot) {
     var CopyWebpackPlugin = require('copy-webpack-plugin');
     var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-    var jsPath = path.join(pathRoot, '/js');
-    var imagePath = path.join(pathRoot, '/images');
+    var imagePath = path.join(pathRoot, '/assets/images');
     var jsTestPath = path.join(pathRoot, '../test');
 
     return (
         {
             context: pathRoot,
             entry: {
-                index: ['appcom/js/index.js'],
+                index: ['appcom/index.js'],
             },
             output: {
                 filename: '[name].js?[hash:8]',
@@ -44,7 +43,7 @@ module.exports = function (staticRoot) {
             },
             resolve: {
                 alias: {
-                    jscom: jsPath,
+                    jscom: pathRoot,
                     appcom: pathRoot,
                     imgcom: imagePath,
                     jstest: jsTestPath,

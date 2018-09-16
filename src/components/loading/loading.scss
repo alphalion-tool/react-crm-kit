@@ -1,0 +1,16 @@
+.s-loading__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    &--error {
+        position: relative;
+        left: initial;
+        margin: 0 auto;
+        text-align: center;
+
+        .c-button {
+            margin-top: 15px;
+        }
+    }
+}

@@ -1,0 +1,145 @@
+@import "src/style/themes/default.scss";
+
+/* 输入栏高度 */
+
+$sidebar-input-height: 30px;
+
+/* 输入栏的margin-top */
+
+$sidebar-input-margin-top: 20px;
+
+/* 导航的margin-top */
+
+$sidebar-menu-margin-top: 10px;
+
+/* sidebar 的padding */
+
+$sidebar-padding: 20px;
+
+/** 左侧导航栏 **/
+
+.s-sidebar {
+    background-color: $sidebar-theme-color;
+    float: left;
+    font-size: 13px;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    width: $sidebar-width; // padding-left: $sidebar-padding;
+    // padding-right: $sidebar-padding;
+    transition: all .3s;
+    &--collapsed {
+        width: $sidebar-collapsed-width;
+    }
+    $sidebar-menu-select-square: 8px;
+
+
+    .ant-menu-dark.ant-menu-inline .ant-menu-item, .ant-menu-dark.ant-menu-inline .ant-menu-submenu-title {
+        border-bottom: 1px solid #212121;
+    }
+
+    .ant-menu-vertical .ant-menu-item, 
+    .ant-menu-vertical-left .ant-menu-item,
+    .ant-menu-vertical-right .ant-menu-item,
+    .ant-menu-inline .ant-menu-item,
+    .ant-menu-vertical .ant-menu-submenu-title,
+    .ant-menu-vertical-left .ant-menu-submenu-title,
+    .ant-menu-vertical-right .ant-menu-submenu-title,
+    .ant-menu-inline .ant-menu-submenu-title {
+        margin-top: 0;
+    }
+
+    .ant-menu-vertical .ant-menu-item:not(:last-child), .ant-menu-vertical-left .ant-menu-item:not(:last-child), .ant-menu-vertical-right .ant-menu-item:not(:last-child), .ant-menu-inline .ant-menu-item:not(:last-child) {
+        margin-bottom: 0;
+    }
+
+    /** logo部分 */
+    $sidebar-logo-img-size: 30px;
+    &__logo {
+        cursor: pointer;
+        color: white;
+        font-size: 17px;
+        line-height: $sidebar-logo-height;
+        height: $sidebar-logo-height;
+        // text-transform: uppercase;
+        padding-left: $sidebar-padding;
+        padding-right: $sidebar-padding;
+        border-bottom: 1px solid #212636;
+        text-indent: 30px;
+        &--white {
+            background-image: url(logo/bitcoin.png);
+        }
+        overflow: hidden;
+        span {
+            position: relative;
+            letter-spacing: 1px;
+            &:before {
+                position: absolute;
+                content: '';
+                width: $sidebar-logo-img-size;
+                height: $sidebar-logo-img-size;
+                top: -5px;
+                left: -35px;
+                background-image: url(logo/bitcoin.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: left;
+            }
+        }
+    }
+    &__toggle {
+        position: absolute;
+        top: $sidebar-logo-height;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        color: white; // background-color: $sidebar-theme-color;
+        text-align: center;
+        font-size: 8px;
+        z-index: 2;
+        border-radius: 15px;
+        transition: all .3s;
+        @at-root .s-sidebar--collapsed & {
+            text-align: center;
+            display: none;
+        } // transition: opacity 1s ease-in-out;
+        animation: cFadeIn .3s 1;
+    }
+    $sidebar-input-bg-color: #212636;
+    $sidebar-input-icon-color: #898c95;
+    /* 查询区域 */
+    &__input__root {
+        padding-left: $sidebar-padding;
+        padding-right: $sidebar-padding;
+        margin-top: $sidebar-input-margin-top;
+        .fonticon {
+            color: $sidebar-input-icon-color;
+        }
+    }
+    &__input {
+        color: white;
+        opacity: 0.6;
+        background: $sidebar-input-bg-color;
+        border-color: transparent;
+    }
+    &__search-icon {
+        cursor: pointer;
+        line-height: $sidebar-input-height; // background-color: $sidebar-input-bg-color;
+        // color: $sidebar-input-icon-color;
+        color: #babdc4;
+        text-align: center;
+        width: 20px;
+    }
+    /** 菜单部分 */
+    &__menu {
+        bottom: 0;
+        left: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        top: $sidebar-logo-height;
+        width: 100%;
+    }
+
+}
