@@ -84,12 +84,11 @@
      
      // 文件目录说明
      |----- build     // 执行npm run build后文件放置的位置
-     |----- mock      // mock-server功能文件，实现了server api的请求代理，以及路由静态文件
      |----- node_modules   
      |----- scripts   // 功能性脚本
      |----- server  // 服务端文件，实现了server api的请求代理，以及路由静态文件
      |----- shells  // shell脚本，部署等脚本
-     |----- src       // 前端js/css/img/font/locale等文件的目录
+     |----- src       // 前端文件的目录
      |----- test   // 测试用到的环境
      |----- .babelrc
      |----- .eslintrc.js
