@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bind } from 'decko';
 import { Icon, Input, Dropdown, Menu } from 'antd';
+import { Link } from 'react-router-dom';
 import PasswordModal from 'jscom/routes/Settings/components/PasswordModal';
 import * as windows from 'jscom/utils/window';
 import { todayStr } from 'jscom/utils/time';
@@ -38,18 +39,13 @@ export default class TopPannel extends Component {  // eslint-disable-line
     handleVisibleChange (visible) {
         this.setState({ visible });
     }
-
-    @bind
-    handlePasswordChange () {
-        windows.openSettingSecurityPage();
-    }
-
+    
     renderMenu () {
         const { onLogout } = this.props;
         return (
             <Menu className="s-top-panel__menu" theme="light">
                 <Menu.Item>
-                    <p onClick={this.handlePasswordChange}>Change Password</p>
+                    <Link to="/settings/security">Change Password</Link>
                 </Menu.Item>
                 <Menu.Item>
                     <p onClick={onLogout}>Quit</p>

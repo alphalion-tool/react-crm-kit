@@ -54,6 +54,7 @@ function connect() {
 }
 
 const app = express();
+const indexController = require('./controller/indexController');
 const hubController = require('./controller/').hubController;
 const authMiddleware = require('./middlewares/auth').authMiddleware;
 
@@ -89,6 +90,8 @@ app.use('/static', express.static(staticPath));
 app.use(authMiddleware);
 // hub all routes
 hubController(app);
+
+app.use(indexController.index);
 
 app.use((err, req, res, next) => {
     if (err) {

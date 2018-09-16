@@ -7,14 +7,16 @@ import ReactDOM from 'react-dom';
 import 'jscom/polyfills';
 import './style/index.scss';
 import logger from 'jscom/utils/logger';
+import browserHistory from 'jscom/utils/history';
 
 import { ReduxProvider, IntlProvider } from 'jscom/components/app/provider';
 
-import { HashRouter, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 
 import store from 'jscom/store/store';
 import AuthActions from 'jscom/actions/auth';
 import App from './containers/App';
+
 
 window.__DATA__ = {};
 
@@ -24,9 +26,9 @@ function render(Component) {
     ReactDOM.render(
         <ReduxProvider store={store}>
             <IntlProvider>
-                <HashRouter>
+                <Router history={browserHistory}>
                     <Route path="/" component={Component} />
-                </HashRouter>
+                </Router>
             </IntlProvider>
         </ReduxProvider>,
         document.getElementById('wrap'),

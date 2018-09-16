@@ -9,6 +9,7 @@ import intlInject from 'jscom/utils/decorators/intlInject';
 import loggerInject from 'jscom/utils/decorators/loggerInject';
 import connectPermission from 'jscom/utils/decorators/connectPermission';
 import { Button, Menu, PopOver, Select, Icon, Input } from 'antd';
+import browserHistory from 'jscom/utils/history';
 import { sideRoutes as initialNavs, flattenNav, getNavItemWithRoute, navWithPermission } from 'jscom/config/navbar';
 import './SideBar.scss';
 
@@ -124,7 +125,7 @@ export class SideBar extends Component {
 
     @bind
     handleLogoClick () {
-        window.location.hash = '/dashboard';
+        browserHistory.push('/dashboard');
     }
 
     handleSelectChange = (value, data) => {

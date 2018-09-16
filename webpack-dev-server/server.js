@@ -66,7 +66,7 @@ server.listen(listenPort, '0.0.0.0', () => {
         const serverUrl = `${appConfig.proxyServer.host}:${appConfig.proxyServer.port}`;
         console.log('API Server: \t\t', serverUrl.green);
     }
-    console.log('You can change config(host or port) in file: ', 'server/config/[dev|prod]config.json or server/config/local.[dev|prod].config.json'.green);
+    console.log('You can change config(host or port) in file: ', 'webpack-dev-server/config.json'.green);
     console.log('++++++++++++++++++++++++++++++++++++++++++++++++++');
     if (env === 'production') {
         console.log('You can access the web in your browser NOW!!'.green);

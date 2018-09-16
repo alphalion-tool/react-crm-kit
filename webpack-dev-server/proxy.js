@@ -11,52 +11,44 @@ import cookieParser from 'cookie-parser';
 const appPath = path.join(__dirname, '');
 const templatePath = path.join(appPath, './templates');
 
-// API proxy
-function proxyAPI({ isHttps, domain, pathname }) {
+// proxy api, about all routes, filter static
+function proxyAPI({ isHttps, domain, pathname = '' }) {
     return proxy(domain, {
         https: isHttps,
         secure: false,
-        proxyReqPathResolver: function (req) {
-            const curPath = Url.parse(req.url).path;
-            if (!pathname) return curPath;
-            return path.join(pathname, curPath);
-        },
         filter: function (req, res) {
             const tmpPath = req.path || req.originalUrl,
                 method = req.method;
             if (tmpPath.startsWith('/static/')) {
                 return false;
             }
-            if (tmpPath === '/' && method === 'GET') {
-                return false;
-            }
-
             console.log(method, '\t', req.originalUrl.green, '\t', '[proxy]'.yellow);
             return true;
         },
-        reqBodyEncoding: null
-    });
-}
 
-// index请求特殊处理
-// 在mock的时候，请求"/"， 会转换为POST请求发送
-function proxyIndex({ isHttps, domain, pathname }) {
-    return proxy(domain, {
-        https: isHttps,
-        secure: false,
+        proxyReqPathResolver: function (req) {
+            const curPath = Url.parse(req.url).path;
+            if (curPath.startsWith('/api')) {
+                return path.join(pathname, curPath);
+            } else {
+                return '/';
+            }            
+        },
+
         proxyReqOptDecorator: function (proxyReq, originalReq) {
             // 在mock的时候，请求"/"， 会转换为POST请求发送
+            if (proxyReq.path.startsWith('/api')) return proxyReq;
+
             proxyReq.headers['Content-Type'] = 'application/json';
             proxyReq.headers['Accept'] = 'application/json, */*';
             proxyReq.method = 'POST';
             return proxyReq;
         },
-        proxyReqPathResolver: function (req) {
-            const curPath = Url.parse(req.url).path;
-            if (!pathname) return curPath;
-            return path.join(pathname, curPath);
-        },
+
         userResDecorator: function (rsp, data, req, res) {
+
+            if (req.originalUrl.startsWith('/api')) return data;
+
             return new Promise((resolve) => {
                 let params = {};
                 try {
@@ -84,14 +76,6 @@ function proxyIndex({ isHttps, domain, pathname }) {
     });
 }
 
-
-// cross domain
-function crossDomain(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', '*');
-    next();
-}
 
 // log request
 function log(req, res, next) {
@@ -141,10 +125,7 @@ export function proxyMiddleware(app, appConfig) {
     // support websocket proxy
     app.use(wsProxyInstance(proxyServerConfig));
 
-    // 首页的特殊处理
-    app.get('/', proxyIndex(proxyServerConfig));
-
-    // for other route
+    // for all route
     app.use('/', proxyAPI(proxyServerConfig));
 
     app.use((err, req, res, next) => {

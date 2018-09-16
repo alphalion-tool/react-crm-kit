@@ -96,7 +96,7 @@ class App extends Component {
             if (!path.startsWith('/auth')) {
                 LocalStore.setRedirectUrl(`${path}${this.props.location.search}`);
             }
-            gotoLoginPage();
+            this.gotoLoginPage();
         } else {
             startIdleCheck(this.handleIdleLogout);
         }
@@ -113,7 +113,7 @@ class App extends Component {
                 if (!path.startsWith('/auth')) {
                     LocalStore.setRedirectUrl(`${path}${nextProps.location.search}`);
                 }
-                gotoLoginPage();
+                this.gotoLoginPage();
                 this.props.dispatch(AppActions.RESETAPP);
                 this.forceUpdate();
                 return;
@@ -136,6 +136,11 @@ class App extends Component {
             permission,
             checkPermission: checkPermissionWrapper(permission)
         };
+    }
+
+    @bind
+    gotoLoginPage () {
+        this.handlePushRoute('/auth/login');
     }
 
     @bind

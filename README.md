@@ -13,7 +13,7 @@
     git clone https://github.com/alphalion-tool/react-crm-kit.git
     cd react-crm-kit && yarn install
     npm run server // 打开本地的server
-    npm run dev
+    npm run start
 
     在浏览器中打开：http://localhost:8082
 
@@ -41,7 +41,7 @@
 
     A，开发、部署、测试相关：
 
-        `npm run dev`    
+        `npm run start`    
             // 开发模式，开启webpack，此时页面中使用静态文件是从`src`中实时产生的
 
         `npm run server`    
@@ -107,7 +107,7 @@
         
 #### 5.2，开发过程
 - `npm run server`  开启本地server，配置可在server/config/prod.config.json中修改
-- `npm run dev`  开启webpack dev server，配置可在webpack-dev-server/config.json中修改
+- `npm run start`  开启webpack dev server，配置可在webpack-dev-server/config.json中修改
 
 #### 5.3，代码校验
 ##### js方面

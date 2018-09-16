@@ -12,7 +12,7 @@ import {
     commonFeatures
 } from '../window';
 
-describe('utils window', () => {
+xdescribe('utils window', () => {
 
     afterEach(() => {
         window.location.hash = '';

@@ -6,6 +6,7 @@
  */
 
 import queryString from 'query-string';
+import browserHistory from './history';
 
 let companyInfoCount = 0;
 let companyNewCount = 0;
@@ -55,7 +56,12 @@ function openTab(url: string, refresh?: bool) {
             refreshUrl += `?${Date.now()}`;
         }
     }
-    window.location.hash = refreshUrl;
+    const stateData = {
+        path: refreshUrl,
+        scrollTop: 0
+    };
+    browserHistory.push(refreshUrl);
+    // window.location.hash = refreshUrl;
 }
 
 
@@ -118,7 +124,7 @@ function openCreatePage(type: pageType, newWindow?: bool, replace?: bool) {
 
 
 function gotoLoginPage(reload?: bool) {
-    window.location.hash = '/auth/login';
+    openTab('/auth/login');
     if (reload) {
         setTimeout(() => {
             window.location.reload();
@@ -127,11 +133,11 @@ function gotoLoginPage(reload?: bool) {
 }
 
 function gotoRegisterPage() {
-    window.location.hash = '/auth/register';
+    openTab('/auth/register');
 }
 
 function openSettingSecurityPage() {
-    window.location.hash = '/settings/security';
+    openTab('/settings/security');
 }
 
 /**
