@@ -83,20 +83,20 @@
 ### 4，目录结构说明
      
      // 文件目录说明
-     |----- build     // 执行npm run build后文件放置的位置
-     |----- node_modules   
-     |----- scripts   // 功能性脚本
-     |----- server  // 服务端文件，实现了server api的请求代理，以及路由静态文件
-     |----- shells  // shell脚本，部署等脚本
-     |----- src       // 前端文件的目录
-     |----- test   // 测试用到的环境
-     |----- .babelrc
-     |----- .eslintrc.js
-     |----- package.json
-     |----- webpack.common.js     // webpack公用配置
-     |----- webpack.config.js     // webpack dev 时配置 （即开发过程）
-     |----- webpack.build.js  // webpack product 时配置  (即上线状态)
-     |----- webpack.dll.js   // webpack dll 
+     ├─ build           // 执行npm run build后文件放置的位置
+     ├─ scripts         // 功能性脚本
+     ├─ server          // 服务端文件，实现了server api的请求代理，以及路由静态文件
+     ├─ shells          // shell脚本，部署等脚本
+     ├─ src             // 前端文件的目录
+     ├─ test            // 测试用到的环境
+     ├─ .babelrc
+     ├─ .eslintrc.js
+     ├─ package.json
+     ├─ webpack.common.js   // webpack公用配置
+     ├─ webpack.config.js   // webpack dev 时配置 （即开发过程）
+     ├─ webpack.build.js    // webpack product 时配置  (即上线状态)
+     └─ webpack.dll.js      // webpack dll 
+     
 
 ### 5，环境搭建、配置修改、开发、上线
 环境至少包含node, yarn    

@@ -3,10 +3,10 @@
 
 ### BackEnd
 - Dashboard接口  done
-- Accounts接口
-- Withdraws接口
-- Orders接口
-- Deposits接口
+- Accounts接口    done
+- Withdraws接口   done
+- Orders接口      done
+- Deposits接口    done
 - Wallets接口
 - Users接口
 - Logs接口
@@ -59,6 +59,6 @@
 
 - performance, minify bundle size  (包大小优化)
 - language switch （多语言切换）
-- 常量等改为预请求，不采用注入方式
-- hot-reload功能
-- 测试正常
+- 常量等改为预请求，不采用注入方式  done
+- hot-reload功能  done
+- 测试正常  done
