@@ -8,7 +8,7 @@
 import Cookie from 'react-cookie';
 import { IMap, IList } from 'jscom/utils/immutable';
 import { createReducers } from 'jscom/store/redux-tool';
-import { switchLocale } from 'appcom/locales/index';
+import { switchLocale } from 'appcom/assets/locales/index';
 import { actionIds as Actions } from '../actions/app';
 import { actionIds as authActions } from '../actions/auth';
 import { processAppEnv } from 'jscom/utils/env';
@@ -37,8 +37,6 @@ export const initialState = {
         messages: initialLang.messages,
         formats: initialLang.formats
     },
-    CURRENCY: new IList([]),  // currency global
-    COUNTRY: new IList([]),  // country global
     permission: window.__data.permission || {},
     user: window.__data.user || {}
 };
@@ -78,8 +76,6 @@ export default createReducers(initialState, {
         processAppEnv({ isLoggedIn: false });
         return {
             ...state,
-            CURRENCY: new IList([]),  // currency global
-            COUNTRY: new IList([]),  // country global
             permission: {},
             user: {}
         };

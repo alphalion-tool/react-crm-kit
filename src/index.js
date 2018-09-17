@@ -5,7 +5,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'jscom/polyfills';
-import './style/index.scss';
+import './assets/style/index.scss';
 import logger from 'jscom/utils/logger';
 import browserHistory from 'jscom/utils/history';
 

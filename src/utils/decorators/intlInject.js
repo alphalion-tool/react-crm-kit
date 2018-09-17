@@ -10,6 +10,6 @@
  * }
  */
 
-import { intlInject } from 'appcom/locales/index';
+import { intlInject } from 'appcom/assets/locales/index';
 
 export default intlInject;
