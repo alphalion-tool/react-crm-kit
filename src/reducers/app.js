@@ -32,8 +32,9 @@ export const initialState = {
     winWidth: 0,
     winHeight: 0,
     resizeTime: 0,
+    locale: initialLang.locale,
     locales: {
-        lang: initialLang.locale,
+        locale: initialLang.locale,
         messages: initialLang.messages,
         formats: initialLang.formats
     },
@@ -49,8 +50,9 @@ export default createReducers(initialState, {
         Cookie.save('lang', language.locale, { path: '/' });
         return {
             ...state,
+            locale: language.locale,
             locales: {
-                lang: language.locale,
+                locale: language.locale,
                 messages: language.messages,
                 formats: language.formats,
             }

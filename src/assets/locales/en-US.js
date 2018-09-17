@@ -1,25 +1,22 @@
 'use strict';
 
 import appLocaleData from 'react-intl/locale-data/en';
-// import messages from './en-US.messages';
+import { addLocaleData } from 'react-intl';
 import messages from './en';
-import { keys, assign } from 'jscom/utils/lodash';
 
-const _message = {};
-keys(messages).forEach((i) => {
-    _message[i] = { id: i, value: messages[i] };
+addLocaleData([...appLocaleData]);
+
+const msgMap = {};
+
+Object.keys(messages).forEach(key => {
+    msgMap[key] = { id: key, value: messages[key] };
 });
 
 window.appENLocale = {
-
-    messages: assign({}, messages),
-
+    messages,
     locale: 'en-US',
-
     data: appLocaleData,
-
-    dataObject: _message,
-
+    dataObject: msgMap,
     formats: {
         date: {
             normal: {

@@ -24,6 +24,8 @@ export default {
     'common.string.search': 'Search',
     'common.string.search.result': 'Search Results',
     'common.string.submit': 'Submit',
+    'common.string.notfound': 'Not Found',
+    'common.string.input': 'Input',
 
     // 通用功能性字符串、描述
     'common.func.expand': 'Expand',

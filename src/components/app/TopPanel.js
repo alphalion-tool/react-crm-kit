@@ -19,7 +19,9 @@ const propTypes = {
     onRemind: PropTypes.func,
     // 登录用户名
     userName: PropTypes.string,
-    businessDate: PropTypes.string,
+
+    switchLang: PropTypes.func.isRequired,
+
 };
 
 export default class TopPannel extends Component {  // eslint-disable-line
@@ -41,11 +43,14 @@ export default class TopPannel extends Component {  // eslint-disable-line
     }
     
     renderMenu () {
-        const { onLogout } = this.props;
+        const { onLogout, switchLang } = this.props;
         return (
             <Menu className="s-top-panel__menu" theme="light">
                 <Menu.Item>
                     <Link to="/settings/security">Change Password</Link>
+                </Menu.Item>
+                <Menu.Item>
+                    <p onClick={switchLang}>EN/中文</p>
                 </Menu.Item>
                 <Menu.Item>
                     <p onClick={onLogout}>Quit</p>

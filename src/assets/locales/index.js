@@ -5,16 +5,12 @@ import { injectIntl, defineMessages, FormattedMessage } from 'react-intl';
 import localENData from './en-US';
 import localZHData from './zh-Hans';
 
-
-// 切换语言函数
+// switch locale function
 export function switchLocale(lang) {
     switch (lang) {
-        // case 'zh':
-        // case 'zh-CN':
-        // case 'zh-Hans':
-        // case 'chinese':
-        //     window.appLocaleData = window.appZHLocale;
-        //     break;
+        case 'zh-Hans':
+            window.appLocaleData = window.appZHLocale;
+            break;
         default:
             window.appLocaleData = window.appENLocale;
             break;
@@ -23,8 +19,7 @@ export function switchLocale(lang) {
     return window.appLocaleData;
 }
 
-
-
+// inject to component
 export function intlInject(target) {
 
     target.prototype.intl = function(id) {
@@ -32,8 +27,8 @@ export function intlInject(target) {
             const { formatMessage } = this.props.intl;
             return formatMessage(window.localeMessages[id]);
         } catch (e) {
-            BLog.error(e);
-            BLog.error(`You need check id '${id}' in locale '${this.props.intl.locale}'`);
+            console && console.error && console.error(e); // eslint-disable-line
+            console && console.error && console.error(`You need check id '${id}' in locale '${this.props.intl.locale}'`); // eslint-disable-line
             return id;
         }
     };
@@ -50,8 +45,8 @@ export function intlMethodInject (target) {
             const { formatMessage } = this.props.intl;
             return formatMessage(window.localeMessages[id]);
         } catch (e) {
-            BLog.error(e);
-            BLog.error(`You need check id '${id}' in locale '${this.props.intl.locale}'`);
+            console && console.error && console.error(e); // eslint-disable-line
+            console && console.error && console.error(`You need check id '${id}' in locale '${this.props.intl.locale}'`); // eslint-disable-line
             return id;
         }
     };

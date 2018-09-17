@@ -2,28 +2,20 @@
 
 import appLocaleData from 'react-intl/locale-data/zh';
 import { addLocaleData } from 'react-intl';
-import { keys, assign } from 'jscom/utils/lodash';
+import messages from './zh';
 
 addLocaleData([...appLocaleData]);
 
-import messages from './zh';
-// import messages from './zh-Hans.messages';
-
-const _message = {};
-keys(messages).forEach((i) => {
-    _message[i] = { id: i, value: messages[i] };
+const msgMap = {};
+Object.keys(messages).forEach((i) => {
+    msgMap[i] = { id: i, value: messages[i] };
 });
 
 window.appZHLocale = {
-
-    messages: assign({}, messages),
-
+    messages,
     locale: 'zh-Hans',
-
     data: appLocaleData,
-
-    dataObject: _message,
-
+    dataObject: msgMap,
     formats: {
         date: {
             normal: {

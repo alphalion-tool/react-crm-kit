@@ -25,6 +25,8 @@ const propTypes = {
 
     collapsed: PropTypes.bool,
 
+    switchLang: PropTypes.func.isRequired,
+
 };
 
 const newNavs = flattenNav(Navs);
@@ -74,7 +76,7 @@ class NavCrumb extends PureComponent {
     }
 
     render() {
-        const { isLoggedIn, userName, path, content } = this.props;
+        const { isLoggedIn, userName, path, content, onLogout, onRemind, switchLang } = this.props;
         
         if (content) {
             return (
@@ -96,14 +98,13 @@ class NavCrumb extends PureComponent {
                 <Breadcrumb className="s-content__breadcrumb">
                     {crumbs.map((item) => this.renderItem(item))}
                 </Breadcrumb>
-
                 <TopPanel
                     isLogin={isLoggedIn}
-                    onLogout={this.props.onLogout}
-                    onRemind={this.props.onRemind}
+                    onLogout={onLogout}
+                    onRemind={onRemind}
                     userName={userName}
+                    switchLang={switchLang}
                 />
-
             </div>
         );
     }

@@ -42,6 +42,6 @@ if (module.hot) {
         // eslint-disable-next-line
         const NextApp = require('./containers/App').default;
         render(NextApp);
-        console.log('app update'); // eslint-disable-line 
+        console && console.log && console.log('app update'); // eslint-disable-line 
     });
 }

@@ -20,6 +20,8 @@ export default {
     'common.string.search.result': '查询结果',
     'common.string.submit': '提交',
     'common.string.exportFormat': '导出格式',
+    'common.string.notfound': '未找到',
+    'common.string.input': '输入',
 
     // 通用功能性字符串、描述
     'common.func.expand': '展开',
@@ -73,107 +75,6 @@ export default {
     'common.business.reportType': 'Report Type',
     'common.business.period': 'Period',
 
-
-    // 导航
-    'nav.transactions': '交易',
-    'nav.position': '持仓 & 现金余额',
-    'nav.margin': '保证金',
-    'nav.margin.marginquery': '保证金查询',
-    'nav.margin.fxmarginquery': 'Fx保证金查询',
-    'nav.margin.calllog': 'Call 日志',
-    'nav.traderecon': 'Trade Reconcilation',
-    'nav.recon': 'Reconcilation',
-    'nav.recon.position': 'Position',
-    'nav.recon.position.dtcc': 'DTCC',
-    'nav.recon.position.occ': 'OCC',
-    'nav.recon.position.rttm': 'RTTM',
-    'nav.recon.position.nscc': 'NSCC',
-    'nav.recon.settlement': 'Settlement',
-    'nav.recon.settlement.nscc': 'NSCC',
-    'nav.recon.settlement.rttm': 'RTTM',
-    'nav.recon.trade': 'Trade',
-    'nav.recon.trade.nscc': 'NSCC',
-    'nav.recon.trade.occ': 'OCC',
-    'nav.recon.trade.rttm': 'RTTM',
-    'nav.smartseg': 'SmartSeg',
-    'nav.smartseg.setup': 'Setup',
-    'nav.smartseg.result': 'Results',
-
-    'nav.fails': '逾期未交割',
-    'nav.username': '你好 呵呵',
-    'nav.accounts': '账户',
-    'nav.products': '产品目录',
-    'nav.maintenance': '全局设置',
-    'nav.regulartory': '合规',
-    'nav.corpactions': '公司行动',
-    'nav.interest': '利息',
-    'nav.invalidmsg': '失效信息',
-    'nav.stmtscfm': '声明确认',
-    'nav.entry': 'Entry',
-    'nav.entry.trade': 'Trade Entry',
-    'nav.entry.journal': 'Journal Entry',
-    'nav.settlements': 'Settlements',
-    'nav.corporateaction': 'CorpActions/Dividends',
-    'nav.openitemmanagment': 'Open Item Management',
-
-
-    // 交易页面
-    'trade.accountId': '帐号Id',
-    'trade.productId': '产品Id',
-    'trade.accountName': '账户名',
-    'trade.productName': '产品名',
-    'trade.entity': '公司',
-    'trade.type': '类型',
-    'trade.query.txtype': '数据类型',
-    'trade.query.txsubtype': 'Sub Type',
-
-
-    'trade.nav.title': '交易查询',
-    'trade.search.btn': '查询',
-    'trade.result.title': '查询结果',
-
-
-    // 帐号相关
-    'accounts.nav.title': '账户查询',
-    'accounts.taxid': 'Tax ID/ SSN',
-    'accounts.asofDate': 'Asof Date',
-
-
-    // 保证金
-    'margin.nav.title': 'Margin Query',
-    'margincall.nav.title': 'Call Log',
-
-
-    // for maintenance
-    'maintenance.nav.title': '全局设置',
-
-    // for product
-    'product.nav.title': '产品',
-    'product.query.symbol': 'Symbol',
-    'product.query.symbolType': 'Symbol Type',
-    'product.query.asofDate': 'Asof Date',
-    'product.query.desc': 'Description',
-    'product.query.option': 'Option',
-    'product.query.used': 'Used',
-    'product.query.expireDate': 'Expires Date',
-    'product.query.strike': 'Strike',
-    'product.query.strike.from': 'From',
-    'product.query.strike.to': 'To',
-    'product.result.title': '查询结果',
-
-    // position
-    'position.query.accountId': 'Account Id',
-    'position.query.accountName': 'Account Name',
-    'position.query.businessDate': 'business Date',
-    'position.query.asofDate': 'As of Date',
-    'position.query.productSymbol': 'Product Symbol',
-    'position.query.productType': 'Product Type',
-    'position.query.company': 'Company',
-    // 持仓
-    'position.nav.title': '持仓和余额查询',
-
     // for settings
     'settings.nav.title': 'Settings',
-
-
 };

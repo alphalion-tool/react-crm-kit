@@ -11,7 +11,6 @@ import { message, Modal } from 'antd';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { auth as AuthActions, app as AppActions } from 'jscom/actions';
 import { loggerInject } from 'jscom/utils/decorators';
-import { isOpenWindow, gotoLoginPage } from 'jscom/utils/window';
 import Signals from 'jscom/utils/signals';
 import Container from 'jscom/components/app/Container';
 import { checkPermissionWrapper, permissionContextTypes } from 'jscom/utils/decorators/connectPermission';
@@ -30,6 +29,7 @@ const propTypes = {
     dispatch: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
     children: PropTypes.element,
+    locale: PropTypes.string, // 'en-US', 'zh-Hans'
     permission: PropTypes.object,
     history: PropTypes.object,
     userName: PropTypes.string,
@@ -42,7 +42,8 @@ export function mapStore2Props(store) {
     const {
         warning,
         permission,
-        user
+        user,
+        locale
     } = store.app || {};
 
     const { isLoggedIn, userName } = store.auth || {};
@@ -52,6 +53,7 @@ export function mapStore2Props(store) {
         userName,
         warning,
         permission,
+        locale,
         user
     };
 }
@@ -68,7 +70,6 @@ class App extends Component {
         super(props, context);
         this.childContext = {};
         this.resetChildContext(props.permission);
-        this.isOpenWindow = isOpenWindow();
         this.routerContent = this.renderChildren();
         this.state = {
             permission: props.permission,
@@ -88,7 +89,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-        window.__DATA__ = window.__DATA__ || {};
         const path = this.props.location.pathname;
 
         if (!this.props.isLoggedIn) {
@@ -150,6 +150,15 @@ class App extends Component {
     }
 
     @bind
+    handleSwitchLang () {
+        if (this.props.locale === 'zh-Hans') {
+            this.props.dispatch(AppActions.switchLang('en-US'));
+        } else {
+            this.props.dispatch(AppActions.switchLang('zh-Hans'));
+        }
+    }
+
+    @bind
     handleIdleLogout () {
         // console.log('idle logout');
         const that = this;
@@ -190,7 +199,8 @@ class App extends Component {
         this.props.dispatch(AuthActions.switchAuth({ isLoggedIn: false, user: {} }));
     }
 
-    handleToggleCollapsed = () => {
+    @bind
+    handleToggleCollapsed () {
         const { collapsed } = this.state;
         const newCollapsed = !collapsed;
         Cookie.save('collapsed', newCollapsed ? '1' : '0');
@@ -199,12 +209,14 @@ class App extends Component {
         })
     }
 
-    handleLogout = () => {
+    @bind
+    handleLogout () {
         this.props.dispatch(AuthActions.logout());
     }
 
     /* replaceFlag参数表示是否直接替换 */
-    handlePushRoute = (route, replaceFlag) => {
+    @bind
+    handlePushRoute (route, replaceFlag) {
         if (replaceFlag) {
             this.props.history.replace(route);
         } else if (this.props.history.location.pathname !== route) {
@@ -221,7 +233,7 @@ class App extends Component {
 
     renderChildren () {
         return (
-            <Switch>
+            <Switch key={`switch-${this.props.locale}`}>
                 <Route {...Dashboard} path="/"  exact />
                 <Route {...Dashboard} path="/dashboard" exact />
                 {routes.map((route) => <Route strict key={`${route.path}`} {...route} />)}
@@ -240,7 +252,7 @@ class App extends Component {
 
     render() {
         const { collapsed, permission } = this.state;
-        const { location, isLoggedIn, userName } = this.props;
+        const { location, isLoggedIn, userName, router, locale } = this.props;
         const siteName = 'BitBal Pro';
         const cls = classNames('app-container', {
             'app-container--logout': !isLoggedIn
@@ -249,30 +261,32 @@ class App extends Component {
         return (
             <div className={cls}>
                 {isLoggedIn && <SideBar
+                    key={`sidebar--${locale}`}
                     siteName={siteName}
                     userName={userName}
                     isLoggedIn={isLoggedIn}
-                    router={this.props.router}
+                    router={router}
                     onPushRoute={this.handlePushRoute}
                     onRemind={this.handleRemind}
                     onLogout={this.handleLogout}
                     permission={permission}
                 />}
                 {isLoggedIn && <NavCrumb
+                    key={`navcrumb--${locale}`}
                     siteName={siteName}
                     userName={userName}
                     isLoggedIn={isLoggedIn}
-                    router={this.props.router}
+                    router={router}
                     onPushRoute={this.handlePushRoute}
                     onRemind={this.handleRemind}
                     onLogout={this.handleLogout}
                     permission={permission}
                     path={location.pathname}
+                    switchLang={this.handleSwitchLang}
                 />}
                 <div className={classNames('s-content', { 's-content--collapsed': collapsed })}>
                     {this.renderChildren()}
                 </div>
-                
             </div>
         );
     }

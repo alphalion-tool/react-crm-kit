@@ -12,8 +12,6 @@
     background-size: 260px 100%;
     background-position: left;
 
-    margin-bottom: 70px;
-
     &--loading {
         border-radius: 10px;
         z-index: 10000;
@@ -23,7 +21,6 @@
         legend {
             font-size: 20px;
             margin-bottom: 10px;
-            // margin-top: -10px;
             padding: 0;
             text-align: center;
         }

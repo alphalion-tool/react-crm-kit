@@ -2,10 +2,11 @@
 
 import React, { PureComponent } from 'react';
 import { Icon } from 'antd';
-import loadable from 'jscom/utils/loadable';
-import { injectReducer } from 'jscom/store/reducers';
+import { intlInject } from 'jscom/utils/decorators';
 import './NotFound.scss';
 
+
+@intlInject
 export default class NotFound extends PureComponent {
 
     render() {
@@ -14,7 +15,7 @@ export default class NotFound extends PureComponent {
                 <div className="u-fixed--center__child">
                     <div className="s-404">
                         <Icon type="info-circle" />
-                        <span>Not Found</span>
+                        <span>{this.intl('common.string.notfound')}</span>
                     </div>
                 </div>
             </div>
