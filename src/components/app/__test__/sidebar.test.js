@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { attachMount } from 'jstest/helpers/enzyme';
-import mockIntl, { mountWithIntl, intlMethodInject } from 'jstest/helpers/intl';
+import { mountEnv } from 'jstest/helpers/enzyme';
+import mockIntl from 'jstest/helpers/intl';
+import { createStore } from 'jscom/store/createStore';
 import { containerMethodInject } from 'jstest/helpers/decorator';
 import SideBar from '../SideBar';
 import SideBarConfig from 'jscom/config/navbar';
@@ -10,8 +11,8 @@ const PureSideBar = containerMethodInject(SideBar.WrappedComponent);
 
 describe('<SideBar />', () => {
 
-    let div,
-        wrapper;
+    let wrapper,
+        store;
 
     it('render <SideBar /> login status', () => {
 
@@ -28,7 +29,8 @@ describe('<SideBar />', () => {
             onSettings: () => {},
             onPushRoute: () => {}
         };
-        wrapper = attachMount(<PureSideBar {...props} intl={mockIntl()} />, div);
+        store =  createStore({ ...window.__TEST__.STORE.getState() });
+        wrapper = mountEnv(<PureSideBar {...props} />, store);
         const menu = wrapper.find('.s-sidebar__menu__root');
         expect(wrapper.state('navs').length).toEqual(7);
         expect(menu.children().length).toEqual(12);
@@ -50,12 +52,7 @@ describe('<SideBar />', () => {
             onSettings: () => {},
             onPushRoute: () => {}
         };
-        wrapper = attachMount(<PureSideBar {...props} intl={mockIntl()} />, div);
-        // mountWithIntl(
-        //     <SideBar {...props} />,
-        //     div
-        // );
-        // takeScreenshot();
+        wrapper = mountEnv(<PureSideBar {...props} />, store);
         expect(wrapper.find('.c-menu').length).toEqual(0);
     });
 

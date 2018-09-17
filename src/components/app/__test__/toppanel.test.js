@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { mount } from 'jstest/helpers/enzyme';
+import { mountEnv } from 'jstest/helpers/enzyme';
 import TopPanel from '../TopPanel';
 import * as windows from 'jscom/utils/window';
 
@@ -16,7 +16,7 @@ describe('<TopPanel />', () => {
             onRemind: jasmine.createSpy('onRemind'),
             userName: 'admin',
         };
-        wrapper = mount(
+        wrapper = mountEnv(
             <TopPanel {...props} />
         );
     });
@@ -42,14 +42,10 @@ describe('<TopPanel />', () => {
 
     it('click setting', () => {
         jasmine.clock().install();
-        const openPwdSpy = spyOn(windows, 'openSettingSecurityPage');
         wrapper.find('TopPannel').find('p').simulate('mouseenter');
         jasmine.clock().tick(400);
         wrapper.update();
-        // wrapper.find('Popup').find('Trigger').first().find('p').simulate('click');
-        // expect(wrapper.state('pwdModalVisible')).toEqual(true);
-        wrapper.find('Popup').find('Trigger').first().find('p').simulate('click');
-        expect(openPwdSpy).toHaveBeenCalled();
+        wrapper.find('Popup').find('Trigger').first().find('a').simulate('click');
     });
 
     it('click logout', () => {

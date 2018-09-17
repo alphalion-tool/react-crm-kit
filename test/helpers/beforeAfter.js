@@ -6,7 +6,7 @@ import { IMap, IList } from 'jscom/utils/immutable';
 import { assign, omit } from 'jscom/utils/lodash';
 import { str2moment, moment2str, todayStr } from 'jscom/utils/time';
 
-import { switchLocale } from 'appcom/locales/index';
+import { switchLocale } from 'jscom/assets/locales/index';
 import locationReducer from 'jscom/store/location';
 import mockStore from 'jstest/helpers/store';
 

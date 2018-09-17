@@ -5,7 +5,7 @@ import { IMap, IList } from 'jscom/utils/immutable';
 import reducer, { initialState, currency2Options, country2Options } from 'jscom/reducers/app';
 import appActions, { actionIds as appActionIds } from 'jscom/actions/app';
 import authActions, { actionIds as authActionIds } from 'jscom/actions/auth';
-import { switchLocale } from 'appcom/locales/index';
+import { switchLocale } from 'jscom/assets/locales/index';
 
 describe('reducer/app', () => {
     

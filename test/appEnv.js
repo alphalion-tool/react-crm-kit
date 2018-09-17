@@ -3,7 +3,7 @@
 import AppActions from 'jscom/actions/app';
 import { processAppEnv } from 'jscom/utils/env';
 
-import { switchLocale } from 'appcom/locales/index';
+import { switchLocale } from 'jscom/assets/locales/index';
 import locationReducer from 'jscom/store/location';
 import mockStore from 'jstest/helpers/store';
 
@@ -25,11 +25,6 @@ const permission = permissionRet.data.user.permission;
 // 用于重置测试环境的全局变量
 global.window.TEST_RESET_ENV = function () {
     processAppEnv(permissionRet.data);
-    window.__DATA__.CURRENCY = []; 
-    window.__DATA__.CURRENCY_OPTIONS = [];
-    window.__DATA__.COUNTRY = [];
-    window.__DATA__.COUNTRY_OPTIONS = [];
-
     window.__DATA__.PERMISSION = permission;
 }
 
